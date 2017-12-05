@@ -22,9 +22,8 @@
         </div>
         <div class="body">
             <div class="navigation">
-                <div class="courseName">OOAD</div>
+                <div class="courseName"></div>
                 <div class="line"></div>
-                <div class="courseIntroduction">ooad is xxx</div>
             </div>
             <div class="content">
                 <div class="block">
@@ -34,22 +33,22 @@
                     <div class="itemBody">
                         <div class="item">
                           <label class="itemName">题目:</label>
-                          <label class="itemName">Domain model与模块划分</label>
+                          <label class="itemName" id="name"></label>
                         </div>
                         <div class="item">
                           <label class="itemName">说明:</label>
-                          <label class="itemName">XXX</label>
+                          <label class="itemName" id="description"></label>
                         </div>
                         <div class="item">
                           <label class="itemName">组数限制:</label>
-                          <label class="itemName">3</label>
+                          <label class="itemName" id="groupLimit"></label>
                         </div>
                         <div class="item">
                           <label class="itemName">组内人数上限:</label>
-                          <label class="itemName">5</label>
+                          <label class="itemName" id="groupMemberLimit"></label>
                         </div>
 						<div class="item">
-						   <div class="modifyButton"> 选择话题 </div>
+						   <div class="modifyButton" onclick="chooseTopic()"> 选择话题 </div>
 						</div>
 					</div>
                 </div>
@@ -57,4 +56,6 @@
             <div class="clear"></div>
         </div>
 </body>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+		<script src="../../js/student/StudentViewTopicPage(fixed).js"></script>
 </html>

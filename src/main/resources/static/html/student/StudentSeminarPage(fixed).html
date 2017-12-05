@@ -23,9 +23,8 @@
         </div>
         <div class="body">
             <div class="navigation">
-                <div class="courseName">OOAD</div>
-                <div class="line"></div>
-                <div class="courseIntroduction">ooad is xxx</div>
+            <div class="courseName"></div>
+            <div class="line"></div>
             </div>
             <div class="content">
                 <div class="block">
@@ -34,16 +33,18 @@
                     <div class="line"></div>
                     <div class="itemBody">
                         <div class="item">
-                          <label class="itemName">本节讨论课的主要内容针对第一二章</label>
+                          <label class="itemName" id="name"></label>
 						  <div class="line"></div>
                         </div>
                         <div class="item">
+                          <label class="itemName">讨论课简介：</label>
+                           <label class="itemName" id="description"></label><br/>
                           <label class="itemName">分组方式：</label>
-						  <label class="itemName">固定分组</label><br/>
+						  <label class="itemName" id="groupingMethod"></label><br/>
                           <label class="itemName">开始时间：</label>
-						  <label class="itemName">11/10/2017</label><br/>
+						  <label class="itemName" id="startTime"></label><br/>
 						  <label class="itemName">结束时间：</label>
-						  <label class="itemName">11/10/2017</label>
+						  <label class="itemName" id="endTime"></label>
                         </div>
                     </div>
                 </div>
@@ -51,9 +52,8 @@
                     <div class="title">话题</div>
                     <div class="line"></div>
 					<div class="blockBody">
-                        <div class="smallblock"><div class="blockFont">话题A</div></div>
-                        <div class="smallblock"><div class="blockFont">话题B</div></div>
-					</div>
+          
+          			</div>
                     <div class="item">
                         <button class="uploadbutton">上传报告</button>
 				    </div>
@@ -66,4 +66,6 @@
             <div class="clear"></div>
         </div>
 </body>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+		<script src="../../js/student/StudentSeminarPage(fixed).js"></script>
 </html>
