@@ -14,10 +14,10 @@
         		课堂管理系统
         	</div>
         	<div class="icon">
-        		<img src="../../Img/home.png">首页
-        		<img src="../../Img/help.png">帮助
-        		<img src="../../Img/exit.png">退出
-        	</div>
+        		<a href="StudentCourseInformation.html"><img src="../../Img/home.png">首页</a>
+                <a href="###"> <img src="../../Img/help.png">帮助</a>
+        		<a href="../common/WechatLoginPage.html"><img src="../../Img/exit.png">退出</a>
+            </div>
         	<div class="clear"></div>
     	</div>
         <div class="body">
@@ -31,7 +31,7 @@
                     <div class="title">讨论课</div>
                     <div class="returnButton">返回上一页</div>
                     <div class="line"></div>
-                    <div class="blockBody">
+                    <div class="blockBody" id="content">
                         <div class="block"><div class="blockFont">讨论课1</div></div>
                         <div class="block"><div class="blockFont">讨论课2</div></div>
                         <div class="block"><div class="blockFont">讨论课3</div></div>
@@ -44,10 +44,15 @@
                     <div class="title">课程分组</div>
                     <div class="line"></div>
                     <div class="blockBody">
-                        <div class="block"><div class="blockFont">固定分组</div></div>
+                        <div class="block">
+                            <div class="blockFont">固定分组</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
             <div class="clear"></div>
+            </div>
         </div>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../../js/student/StudentCourseInformation.js"></script>
 </body>
 </html>
