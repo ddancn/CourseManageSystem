@@ -23,7 +23,7 @@ public class TopicController {
 	@RequestMapping(value="/{topicId}", method=RequestMethod.GET)
 	@ResponseStatus(value=HttpStatus.OK)
 	public Topic getTopicById(@PathParam("topicId") Integer topicId){
-		Topic topic=new Topic(1);//假的
+		Topic topic=new Topic();//假的
 		return topic;
 	}
 

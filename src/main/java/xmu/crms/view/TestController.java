@@ -28,7 +28,7 @@ public class TestController {
 	//以URL请求返回对象，即json数据
 	@RequestMapping(value="/user", method=RequestMethod.GET)
 	public User getUser() {
-		return new User("zhangsan","123456");
+		return new User();
 	}
 	
 }

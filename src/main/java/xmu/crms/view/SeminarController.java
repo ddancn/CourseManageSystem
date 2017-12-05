@@ -26,7 +26,7 @@ public class SeminarController {
 	@RequestMapping(value="/{seminarId}", method=RequestMethod.GET)
 	@ResponseStatus(value=HttpStatus.OK)
 	public Seminar getSeminarById(@PathParam("seminarId") Integer seminarId){
-		Seminar seminar=new Seminar(1);//假的
+		Seminar seminar=new Seminar();//假的
 		return seminar;
 	}
 	
@@ -65,7 +65,7 @@ public class SeminarController {
 	@ResponseStatus(value=HttpStatus.OK)
 	public List<Topic> getTopicList(@PathParam("seminarId") Integer seminarId){
 		List<Topic> topiclist=new ArrayList<Topic>();//假的
-		topiclist.add(new Topic(1));//测试
+		topiclist.add(new Topic());//测试
 		return topiclist;
 	}
 	

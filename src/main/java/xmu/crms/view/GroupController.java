@@ -20,7 +20,7 @@ public class GroupController {
 	@RequestMapping(value="/{groupId}", method=RequestMethod.GET)
 	@ResponseStatus(value=HttpStatus.OK)
 	public Group getTopicrById(@PathParam("groupId") Integer groupId, boolean embedTopics, boolean embedGrade){
-		Group group=new Group(1);//假的
+		Group group=new Group();//假的
 		return group;
 	}
 

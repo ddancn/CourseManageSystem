@@ -13,7 +13,7 @@ public class UserController {
     //获得当前用户
 	@RequestMapping(value="/me", method=RequestMethod.GET)
 	public User getUser() {
-		User me=new User("zhangsan","123456");
+		User me=new User();
 		return me;
 	}
 	

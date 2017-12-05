@@ -32,7 +32,7 @@ public class ClassController {
 	@RequestMapping(value="/{classId}", method=RequestMethod.GET)
 	@ResponseStatus(value=HttpStatus.OK)
 	public Class getClassById(@PathParam("classId") Integer classId){
-		Class clas=new Class(1);//假的
+		Class clas=new Class();//假的
 		return clas;
 	}
 	
