@@ -2,9 +2,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>讨论课修改</title>
+    <title>创建话题</title>
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="../../css/teacher/content.css">
+    <link rel="stylesheet" href="../../css/teacher/frame.css">
 </head>
 <body>
     
@@ -13,17 +14,17 @@
             课堂管理系统
           </div>
           <div class="icon">
-             <img src="../../Img/home.png">首页
-             <img src="../../Img/home.png">帮助
-             <img src="../../Img/home.png">退出
+            <img src="../../Img/home.png">首页
+            <img src="../../Img/help.png">帮助
+            <img src="../../Img/exit.png">退出
           </div>
           <div class="clear"></div>
         </div>
         <div class="body">
             <div class="navigation">
-                <div class="courseName">OOAD</div>
+                <div class="courseName"></div>
                 <div class="line"></div>
-                <div class="courseIntroduction">ooad is xxx</div>
+            
             </div>
             <div class="content">
                 <div class="block">
@@ -31,42 +32,25 @@
                     <div class="returnButton">返回上一页</div>
                     <div class="line"></div>
                     <div class="itemBody">
-                        <div class="item">
-                          <label class="itemName">讨论课名称:</label>
-                          <input type="text" name="seminarName" class="bigInput">
+                        <div class="item" id="name">
+                          <label class="itemName">题   目 :</label>
+                         
                         </div>
-                        <div class="item" style="height:40%;">
-                          <label class="itemName">讨论课说明:</label>
-                          <textarea class="textStyle"></textarea>
+                        <div class="item" style="height:40%;" id="description">
+                          <label class="itemName">说   明 :</label>
+                       
                         </div>
-                        <div class="item">
-                          <label class="itemName">分组方式: </label>
-                          <select class="bigSelect"></select>
+                        <div class="item" id="groupLimit">
+                          <label class="itemName" >组数限制: </label>
+                          
                         </div>
-                        <div class="item">
-                          <label class="itemName">开始时间: </label>
-                          <input type="date" name="startTime" class="timeStyle">
-                          <label class="itemName" style="margin-left: 15%">结束时间: </label>
-                          <input type="date" name="startTime" class="timeStyle">
+                        <div class="item" id="number">
+                          <label class="itemName">组内人数上限: </label>
+                         
                         </div>
                         <div class="item">
-                          <label class="itemName">评分规则:</label>
-                          <label class="itemName">讨论课分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
-                          <label class="itemName">报告分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
-                        </div>
-                        <div class="item" style="margin-left: 18%">
-                          <label class="itemName">5分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
-                          <label class="itemName">4分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
-                          <label class="itemName">3分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
-                        </div>
-                       <div class="item">
                           <button class="submit">提 交</button>
-                          <button class="reset">重 置</button>
+                          <button class="reset" onclick="reload()">重 置</button>
                           <div class="clear"></div>
                         </div>
                     </div>
@@ -75,4 +59,6 @@
             <div class="clear"></div>
         </div>
 </body>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+		<script src="../../js/teacher/TeacherUpdateTopic.js"></script>
 </html>
