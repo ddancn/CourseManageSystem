@@ -24,7 +24,7 @@ public class UserController {
 		return user.getName();
 	}
 	
-	//微信登录，返回用户基本信息，待修改
+	//微信登录，返回用户基本信息，TODO
 	@RequestMapping(value="/signin", method=RequestMethod.GET)
 	public String signin(String code, String state, String success_url){
 		String retCode=null;

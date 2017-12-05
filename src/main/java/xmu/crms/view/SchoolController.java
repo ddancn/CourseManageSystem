@@ -18,7 +18,6 @@ public class SchoolController {
 	
 	//获取学校列表（按照城市查找学校
 	@RequestMapping(value="", method=RequestMethod.GET)
-	@ResponseStatus(HttpStatus.OK)
 	public List<School> getSchoolList(String city){
 		List<School> schoollist=new ArrayList<School>();//假的
 		return schoollist;
@@ -26,14 +25,12 @@ public class SchoolController {
 	
 	//添加学校
 	@RequestMapping(value="", method=RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
 	public int createSchool(@RequestBody School school){	
 		return school.getId();
 	}
 	
 	//获取省份列表
     @RequestMapping(value="/province", method=RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
     public List<String> getProvinceList(){
         List<String> provincelist=new ArrayList<String>();//假的
         return provincelist;
@@ -41,7 +38,6 @@ public class SchoolController {
     
 	//获取城市列表
     @RequestMapping(value="/city", method=RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
     public List<String> getCityList(String province){
         List<String> citylist=new ArrayList<String>();//假的
         return citylist;
