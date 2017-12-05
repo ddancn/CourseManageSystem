@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>教师基本信息改</title>
+<link href="../../css/common/InfoModifyPage.css" rel="stylesheet"
+	type="text/css" />
+
+</head>
+<body>
+	<div class="top">
+		<div class="font">课堂管理系统</div>
+		<div class="icon">
+			<img src="../../Img/home.png">首页 <img src="../../Img/help.png">帮助
+			<img src="../../Img/exit.png">退出
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="body">
+		<div class="navigation">
+			<div class="title">导航</div>
+			<div class="line"></div>
+			<div class="courseIntroduction">
+				<a class="guidefont" href="#">基本信息</a> <a class="guidefont" href="#">课程信息</a>
+				<a class="guidefont" href="#">新建课程</a>
+			</div>
+		</div>
+		<div class="content">
+			<div class="title">基本信息</div>
+			<hr class="line" />
+			<div class="imgarea">
+				<img class="img" src="../../Img/link.jpg" />
+			</div>
+
+			<div class="info">
+
+				<table id="personinfomodify" class="table">
+
+				</table>
+				<br /> <br /> <br /> <br /> <a href="TeacherHomePage.html">
+					<button class="button" onclick="changePersonInfo()"
+						style='cursor: pointer;'>提交</button>
+				</a>
+
+			</div>
+		</div>
+
+
+		<div class="clear"></div>
+	</div>
+	<!-- jQuery Js -->
+	<script src="../../../../../../../webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script src="../../js/teacher/modify.js"></script>
+</body>
+</html>
