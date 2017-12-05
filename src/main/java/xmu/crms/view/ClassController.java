@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import xmu.crms.model.Class;
 import xmu.crms.model.ClassGroup;
 import xmu.crms.model.CourseClass;
+import xmu.crms.model.Proportions;
+import xmu.crms.model.Student;
+import xmu.crms.model.Teacher;
 import xmu.crms.model.User;
 
 @RestController
@@ -24,13 +27,20 @@ public class ClassController {
 	//获取与当前用户相关联的或符合条件的班级列表
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public List<CourseClass> getClassList(String courseName, String teacherName){
-		return new ArrayList<CourseClass>();
+		ArrayList<CourseClass> list=new ArrayList<CourseClass>();
+		Teacher tea1=new Teacher ();
+		tea1.setName("邱明");
+		Teacher tea2=new Teacher ();
+		tea2.setName("杨律青");
+		list.add(new CourseClass( 23,"周三1-2节",60,"周三1-2、周五1-2","公寓405","OOAD",tea1));
+		list.add(new CourseClass( 42,"一班",60,"周三34节 周五12节","海韵202",".Net 平台开发",tea2));
+		return list;
 	}
 
 	//按ID获取班级，传入班级id，返回班级对象
 	@RequestMapping(value="/{classId}", method=RequestMethod.GET)
 	public Class getClassById(@PathParam("classId") Integer classId){
-		Class clas=new Class();//假的
+		Class clas=new Class( 23,"周三1-2节",120,"周三一二节","海韵201",-1,"/roster/周三12班.xlsx",new  Proportions (50,50, 20,60,20));//假的1
 		return clas;
 	}
 	
@@ -50,13 +60,24 @@ public class ClassController {
 	@RequestMapping(value="/{classId}/student", method=RequestMethod.GET)
 	public List<User> getStudentList(@PathParam("classId") Integer classId, String numBeginWith, String nameBeginWith){
 		List<User> studentList=new ArrayList<User>();
+		User user1=new User();
+		user1.setId(233);
+		user1.setName("张三");
+		user1.setNumber("24320152202333");
+		studentList.add(user1);
+		
+		User user2=new User();
+		user2.setId(245);
+		user2.setName("张八");
+		user2.setNumber(" 24320152202334");
+		studentList.add(user2);
 		return studentList;//是否要分student和teacher
 	}
 	
 	//学生按ID选择班级，TODO
 	@RequestMapping(value="/{classId}/student", method=RequestMethod.POST)
 	public String chooseClass(@PathParam("classId") Integer classId, int studentId){
-	    String url=null;
+	    String url="/class/34/student/2757";
 	      return url;
 	}
 	
@@ -69,7 +90,10 @@ public class ClassController {
 	//按ID获取自身所在班级小组
 	@RequestMapping(value="/{classId}/classgroup", method=RequestMethod.GET)
 	public ClassGroup getGroupByClassId(@PathParam("classId") Integer classId){
-		return new ClassGroup();	
+		Student stu[]=new Student[2];
+		stu[0]=new Student( 2756,"李四","23320152202443");
+		stu[1]=new Student(  2777,"王五","23320152202433");
+		return new ClassGroup(new Student(  2757,"张三","23320152202333"),stu);	
 	}
 		
 	//班级小组组长辞职

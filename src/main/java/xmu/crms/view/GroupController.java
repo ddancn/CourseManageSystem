@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import xmu.crms.model.Group;
+import xmu.crms.model.PresentationGrade;
 import xmu.crms.model.SeminarGrade;
+import xmu.crms.model.Student;
+import xmu.crms.model.Topic;
 
 @RestController
 @RequestMapping("/group")
@@ -19,7 +22,12 @@ public class GroupController {
     //是否包含小组选择的话题、是否包含小组的成绩
 	@RequestMapping(value="/{groupId}", method=RequestMethod.GET)
 	public Group getTopicrById(@PathParam("groupId") Integer groupId, boolean embedTopics, boolean embedGrade){
-		Group group=new Group();//假的
+		 Student members[]=new Student[2];
+		 members[0]=new Student(  5324, "李四", null);
+		 members[0]=new Student(  5678, "王五", null);
+		 Topic topic[]=new Topic[1];
+		topic[0]=new Topic(  257, null,"领域模型与模块", null, groupId, groupId, groupId);
+		Group group=new Group(28,null, new Student(8888, "张三", null),members,topic , null, null);//假的
 		return group;
 	}
 
@@ -51,7 +59,7 @@ public class GroupController {
     @RequestMapping(value="/{groupId}/topic", method=RequestMethod.POST)
     @ResponseStatus(value=HttpStatus.CREATED)
     public String chooseTopic(@PathParam("groupId") Integer groupId, int topicId){
-        String url = null;
+        String url = "/group/27/topic/23";
         return url;
     }
     
@@ -64,7 +72,9 @@ public class GroupController {
 	//按ID获取小组的讨论课成绩
 	@RequestMapping(value="/{groupId}/grade", method=RequestMethod.GET)
 	public SeminarGrade getGradeByGroupId(@PathParam("groupId") Integer groupId){
-		return new SeminarGrade();		
+		PresentationGrade presentationGrades[]=new PresentationGrade[1];
+		presentationGrades[0]=new PresentationGrade(257,4);
+		return new SeminarGrade( presentationGrades, 3, 4);		
 	}
 	
 	//按ID设置小组的报告分
