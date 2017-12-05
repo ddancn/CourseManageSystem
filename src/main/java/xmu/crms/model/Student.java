@@ -33,8 +33,16 @@ public class Student {
         this.unionID = unionID;
         this.avatar = avatar;
     }
+    ////////////////////
+    public Student(int id, String name,String number) {
+ this.id = id;
+ this.number = number;
+ this.name = name;
 
-    public int getId() {
+}
+    //////////////////////
+
+	public int getId() {
         return id;
     }
 
