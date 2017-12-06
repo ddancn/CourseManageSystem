@@ -1,13 +1,16 @@
-/**
+ï»¿/**
  * Created by lenovo on 2017/12/5.
  */
-//window.onload = getProvince,getCity;
+window.onload = function(){
+	getProvince();
+	getCity();
+}
 
-//»ñÈ¡Ê¡·İÁĞ±í
+//è·å–çœä»½åˆ—è¡¨
 function getProvince(){
     var provincelist;
     $.ajax({
-        url:"/province",
+        url:"/school/province",
         type:"GET",
         success:function(data){
             provincelist = data;
@@ -18,18 +21,18 @@ function getProvince(){
             }//end for
         },
         error:function(){
-            alert("»ñÈ¡Ê¡·İÁĞ±íÊ§°Ü£¡");
+            alert("è·å–çœä»½åˆ—è¡¨å¤±è´¥ï¼");
         }
     });
 }
 
-//»ñÈ¡³ÇÊĞÁĞ±í
+//è·å–åŸå¸‚åˆ—è¡¨
 function getCity(){
     var citylist;
     var province = document.getElementById("province").value;
-    alert(province);
+  //  alert(province);
     $.ajax({
-        url:"/city",
+        url:"/school/city",
         type:"GET",
         data:{province:province},
         success:function(data){
@@ -41,12 +44,12 @@ function getCity(){
             }//end for
         },
         error:function(){
-            alert("»ñÈ¡³ÇÊĞÁĞ±íÊ§°Ü£¡");
+            alert("è·å–åŸå¸‚åˆ—è¡¨å¤±è´¥ï¼");
         }
     });
 }
 
-//Ìí¼ÓÑ§Ğ£
+//æ·»åŠ å­¦æ ¡
 function createschool(){
     var data = {"name":$("#school").val(),"province":$("#province").val(),"city":$("#city")};
 
@@ -56,10 +59,10 @@ function createschool(){
         contentType:"application/json",
         data:JSON.stringify(data),
         success:function(data){
-            alert("´´½¨Ñ§Ğ£³É¹¦£¡" + data);
+            alert("åˆ›å»ºå­¦æ ¡æˆåŠŸï¼" + data);
         },
         error:function(){
-            alert("´´½¨Ñ§Ğ£Ê§°Ü£¡");
+            alert("åˆ›å»ºå­¦æ ¡å¤±è´¥ï¼");
         }
     })
 

@@ -1,13 +1,19 @@
-/**
+ï»¿/**
  * Created by lenovo on 2017/12/6.
  */
-    //¸÷¸ö¿éµÄÒ³ÃæÌø×ª»¹Ã»ÓĞĞ´
+    //å„ä¸ªå—çš„é¡µé¢è·³è½¬è¿˜æ²¡æœ‰å†™
+var courseId = 12;
+
 
 var courseId;
-//Ò³Ãæ¼ÓÔØÊ±»ñÈ¡¿Î³ÌĞÅÏ¢£¬ÒÑ´´½¨µÄ°à¼¶ĞÅÏ¢ºÍÌÖÂÛ¿ÎĞÅÏ¢
-window.onload = getCourseInfo;
+//é¡µé¢åŠ è½½æ—¶è·å–è¯¾ç¨‹ä¿¡æ¯ï¼Œå·²åˆ›å»ºçš„ç­çº§ä¿¡æ¯å’Œè®¨è®ºè¯¾ä¿¡æ¯
+window.onload = function(){
+	getCourseInfo();
+	getClassInfo();
+	getSeminarsInfo();
+}
 
-//»ñÈ¡¿Î³ÌµÄ¾ßÌåĞÅÏ¢
+//è·å–è¯¾ç¨‹çš„å…·ä½“ä¿¡æ¯
 function getCourseInfo() {
     var course;
     $.ajax({
@@ -16,65 +22,72 @@ function getCourseInfo() {
         success: function (data) {
             course = data;
             courseId = course.id;
-            $("#courseName").html = course.name;
-            $("#courseIntroduction").html = course.description;
+            $("#courseName").html(course.name);
+            $("#courseIntroduction").html(course.description);
+            alert("è·å–è¯¾ç¨‹ä¿¡æ¯æˆåŠŸï¼");
         },
         error: function () {
-            alert("»ñÈ¡¿Î³ÌĞÅÏ¢Ê§°Ü£¡");
+            alert("è·å–è¯¾ç¨‹ä¿¡æ¯å¤±è´¥ï¼");
         }
     });
 }
 
-//»ñÈ¡ÒÑ´´½¨µÄ°à¼¶ĞÅÏ¢
+//è·å–å·²åˆ›å»ºçš„ç­çº§ä¿¡æ¯
 function getClassInfo() {
     var classlist;
     $.ajax({
-        url: "/course/{courseId}/seminars",
+        url: "/course/{courseId}/class",
         type: "GET",
         success: function (data) {
             classlist = data;
-            $("#classlist").html = "";
+            $("#classlist").html("");
             for (var i in classlist) {
                 var item = classlist[i];
                 $("#classlist").append("<div class=\"block\"><div class=\"blockFont\" id=\"class"
-                    + item.id + "\">"
-                    + item.name + "</div></div>");
+                    + item.id + "\"><a href=\"/TeacherClssInfo\">"
+                    + item.name + "</a></div></div>");
             }//end for
             $("#classlist").append(" <div class=\"block\">"
-                +"<a href='###' ><img class=\"addImg\" src=\"../../Img/smalladd.png\" alt=\"Ìí¼Ó\" ></a></div>");    //Ò³ÃæÌø×ª£¡£¡£¡
+                +"<a href='/TeacherCreateClass' ><img class=\"addImg\" src=\"../../Img/smalladd.png\" alt=\"æ·»åŠ \" ></a></div>");    //é¡µé¢è·³è½¬ï¼ï¼
+            alert("è·å–ç­çº§ä¿¡æ¯æˆåŠŸï¼");
         },
         error: function () {
-            alert("»ñÈ¡°à¼¶ĞÅÏ¢Ê§°Ü!");
+            alert("è·å–ç­çº§ä¿¡æ¯å¤±è´¥!");
         }
     });
 }
 
-//»ñÈ¡ÒÑ´´½¨µÄÌÖÂÛ¿ÎÁĞ±í
+//è·å–å·²åˆ›å»ºçš„è®¨è®ºè¯¾åˆ—è¡¨
 function getSeminarsInfo() {
     var seminarlist;
 
     $.ajax({
-        url: "/course/{courseId}/seminars",
+        url: "/course/{courseId}/seminar",
         type: "GET",
         success: function (data) {
             seminarlist = data;
-            $("#seminarlist").html = "";
+            $("#seminarlist").html("");
             for (var i in seminarlist) {
                 var item = seminarlist[i];
                 $("#seminarlist").append("<div class=\"block\"><div class=\"blockFont\" id=\"seminar"
-                    + item.id + "\">"
-                    + item.name + "</div></div>");
+                    + item.id + "\"><a href=\"/TeacherSeminarInfo\">"
+                    + item.name + "</a></div></div>");
             }//end for
             $("#seminarlist").append(" <div class=\"block\">"
-            +"<a href='###' ><img class=\"addImg\" src=\"../../Img/smalladd.png\" alt=\"Ìí¼Ó\" ></a></div>");      //Ò³ÃæÌø×ª£¡£¡£¡
+            +"<a href='/TeacherCreateSeminar' ><img class=\"addImg\" src=\"../../Img/smalladd.png\" alt=\"æ·»åŠ \" ></a></div>");      //é¡µé¢è·³è½¬ï¼ï¼ï¼
+            alert("è·å–è®¨è®ºè¯¾åˆ—è¡¨æˆåŠŸï¼");
         },
         error: function () {
-            alert("»ñÈ¡ÌÖÂÛ¿ÎÁĞ±íÊ§°Ü£¡");
+            alert("è·å–è®¨è®ºè¯¾åˆ—è¡¨å¤±è´¥ï¼");
         }
     })
 }
 
 function hello(){
     alert("hello!");
+}
+
+function goback(){
+	window.history.go(-1);  //è¿”å›ä¸Šä¸€é¡µ
 }
 

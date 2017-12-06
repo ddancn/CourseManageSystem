@@ -1,7 +1,11 @@
 ﻿/**
  * 
  */
-window.onload = getSchool;
+window.onload = function(){
+	getSchool();
+	getProvincelist();
+	getCitylist();
+}
 
 //绑定，返回一个学生对象
 function bind(){
@@ -110,46 +114,70 @@ function judgesex() {
     return gender;
 }
 
-//创建学校
-function createschool(){
-	$.ajax({
-		url:"/school",
-		type:"",
-		success:function(data){
-			alert(data);
-		},
-		error:function(){
-			
-		}
-	});
-}
 
 //获取学校列表
 function getSchool(){
 	var schoollist;
+	
 	$.ajax({
 		url:"/school",
 		type:"GET",
 		success:function(data){
 			schoollist = data;
-			$("#province").html="";
-			$("#city").html="";
 			$("#school").html="";
 			for(var i in schoollist){
 				var item = schoollist[i];
-				$("#province").append("<option value=\""
-						+ item.id + "\">"
-						+ item.province + "</option>");
-				$("#city").append("<option value=\""
-						+ item.id + "\">"
-						+ item.city + "</option>");
 				$("#school").append("<option value=\""
-						+ item.id + "\">"
+						+ item.name + "\">"
 						+ item.name + "</option>");
 			}//end for
 		},
 		error:function(){
 			alert("获取学校列表失败！");
+		}
+	});
+}
+
+//获取省份列表
+function getProvincelist(){
+	var provincelist;
+	$.ajax({
+		url:"/school/province",
+		type:"GET",
+		success:function(data){
+			provincelist = data;
+			$("province").html="";
+			for(var i in provincelist){
+				var item = provincelist[i];
+				$("#province").append("<option value=\""
+						+ item + "\">"
+						+ item + "</option>")
+			}//end for
+		},
+		error:function(){
+			alert("获取省份列表失败！");
+		}
+	});
+}
+
+//获取市列表
+function getCitylist(){
+	var citylist;
+	$.ajax({
+		url:"/school/city",
+		type:"GET",
+		success:function(data){
+			provincelist = data;
+			$("#city").html="";
+			for(var i in provincelist){
+				var item = provincelist[i];
+				$("#city").append("<option value=\""
+						+ item + "\">"
+						+ item + "</option>")
+			}//end for
+		},
+		error:function(){
+			alert("获取城市列表失败！");
 		}
 	});
 }

@@ -1,13 +1,16 @@
-/**
+ï»¿/**
  * Created by lenovo on 2017/12/6.
  */
 var courseId;
 var classId = 23;
 var url;
-//¼ÓÔØÒ³ÃæÊ±£¬»ñÈ¡°à¼¶ĞÅÏ¢
-window.onload = getClassInfo;
+//åŠ è½½é¡µé¢æ—¶ï¼Œè·å–ç­çº§ä¿¡æ¯
+window.onload = function(){
+	getCourseInfo();
+	getClassInfo();
+}
 
-//»ñÈ¡¿Î³ÌµÄ¾ßÌåĞÅÏ¢
+//è·å–è¯¾ç¨‹çš„å…·ä½“ä¿¡æ¯
 function getCourseInfo() {
     var course;
     $.ajax({
@@ -16,16 +19,17 @@ function getCourseInfo() {
         success: function (data) {
             course = data;
             courseId = course.id;
-            $("#courseName").html = course.name;
-            $("#courseIntroduction").html = course.description;
+            $("#courseName").html(course.name) ;
+            $("#courseIntroduction").html(course.description);
+            alert("è·å–è¯¾ç¨‹ä¿¡æ¯æˆåŠŸï¼");
         },
         error: function () {
-            alert("»ñÈ¡¿Î³ÌĞÅÏ¢Ê§°Ü£¡");
+            alert("è·å–è¯¾ç¨‹ä¿¡æ¯å¤±è´¥ï¼");
         }
     });
 }
 
-//»ñÈ¡°à¼¶µÄ¾ßÌåĞÅÏ¢
+//è·å–ç­çº§çš„å…·ä½“ä¿¡æ¯
 function getClassInfo(){
     var classInfo;
     $.ajax({
@@ -43,33 +47,34 @@ function getClassInfo(){
             $("bgrade").html=classInfo.proportions.b;
             $("cgrade").html=classInfo.proportions.c;
             url=classInfo.rester;
+            alert("è·å–ç­çº§ä¿¡æ¯æˆåŠŸï¼");
         },
         error:function(){
-            alert("»ñÈ¡°à¼¶ĞÅÏ¢Ê§°Ü£¡");
+            alert("è·å–ç­çº§ä¿¡æ¯å¤±è´¥ï¼");
         }
     })
 }
 
-//·µ»ØÉÏÒ»Ò³
+//è¿”å›ä¸Šä¸€é¡µ
 function goback(){
-    window.history.go(-1);  //·µ»ØÉÏÒ»Ò³
+    window.history.go(-1);  //è¿”å›ä¸Šä¸€é¡µ
 }
 
-//ÏÂÔØÑ§ÉúÃûµ¥
+//ä¸‹è½½å­¦ç”Ÿåå•
 function downloadfile(){
-   alert("ÏÂÔØ³É¹¦");
+   alert("ä¸‹è½½æˆåŠŸ");
 }
 
-//É¾³ı°à¼¶
+//åˆ é™¤ç­çº§
 function deleteclass(){
     $.ajax({
         url:"/class/{classId}",
         type:"DELETE",
         success:function(data){
-            alert("É¾³ı°à¼¶³É¹¦£¡");
+            alert("åˆ é™¤ç­çº§æˆåŠŸï¼");
         },
         error:function(){
-            alert("É¾³ı°à¼¶Ê§°Ü£¡");
+            alert("åˆ é™¤ç­çº§å¤±è´¥ï¼");
         }
     });
 }
