@@ -8,21 +8,34 @@
                                      maximum-scale=1.0,
                                      user-scalable=no">
     <title>ClassManage</title>
-<link href="../../css/teacher/TeacherCreateSchool.css" rel="stylesheet" type="text/css"/>
+    <link href="../../css/teacher/TeacherCreateSchool.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
 <div class="titleBackground"></div>
 <div class="title">课程管理系统</div>
 <div class="icon">
-<img src="../../Img/home.png">首页
-				<img src="../../Img/help.png">帮助
-				<img src="../../Img/exit.png">退出
+    <img src="../../Img/home.png">首页
+    <img src="../../Img/help.png">帮助
+    <img src="../../Img/exit.png">退出
 </div>
-<div class="province">所在省份:<select class="provinceSelect"></select></div>
-<div class="city">所在城市:<select class="citySelect"></select></div>
-<div class="school">学校名称:<input type="text" name="school"/></div>
-<div class="submit">提交</div>
+<div class="province">
+    所在省份:
+    <select class="provinceSelect" id="province">
+        <option value="福建">福建</option>
+        <option value="北京">北京</option>
+    </select>
+</div>
+<div class="city">所在城市:<select class="citySelect" id="city">
+    <option value="福州">福州</option>
+    <option value="厦门">厦门</option>
+</select></div>
+<div class="school">学校名称:<input type="text" name="school" id="school"/></div>
+<div class="submit"><button onclick="createschool()">提交</button></div>
+
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../js/teacher/TeacherCreateSchool.js"></script>
 </body>
 
 </html>

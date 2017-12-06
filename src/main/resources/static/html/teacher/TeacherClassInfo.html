@@ -24,52 +24,52 @@
         </div>
         <div class="body">
             <div class="navigation">
-                <div class="courseName">OOAD</div>
+                <div class="courseName" id="courseName">OOAD</div>
                 <div class="line"></div>
-                <div class="courseIntroduction">ooad is xxx</div>
+                <div class="courseIntroduction" id="courseIntroduction">ooad is xxx</div>
             </div>
             <div class="content">
                 <div class="block">
-                    <div class="title">XXXX</div>
-                    <div class="returnButton">返回上一页</div>
+                    <div class="title" id="className">XXXX</div>
+                    <div class="returnButton" onclick="goback()">返回上一页</div>
                     <div class="line"></div>
                     <div class="itemBody">
                         <div class="item">
                           <label class="itemName">班级名称:</label>
-                          <label class="itemName">周三1-2节</label>
+                          <label class="itemName" id="name">周三1-2节</label>
                         </div>
                         <div class="item">
                           <label class="itemName">上课地点:</label>
-                          <label class="itemName">海韵212</label>
+                          <label class="itemName" id="address">海韵212</label>
                         </div>
                         <div class="item">
                           <label class="itemName">上课时间:</label>
-                          <label class="itemName">单周周一12节 </label>
+                          <label class="itemName" id="time">单周周一12节 </label>
                           <label class="itemName"> 周三12节</label>
                         </div>
                         <div class="item">
                           <label class="itemName">评分规则:</label>
                           <label class="itemName">讨论课分数占比</label>
-                          <label class="itemName">60% </label>
+                          <label class="itemName" id="presentation">60% </label>
                           <label class="itemName"> 报告分数占比</label>
-                          <label class="itemName">40%</label>
+                          <label class="itemName" id="report">40%</label>
                         </div>
                         <div class="item" style="margin-left: 25%">
                           <label class="smallItemName">5分占比</label>
-                          <label class="itemName" name="seminarGrade">30%</label>
+                          <label class="itemName" name="seminarGrade" id="agrade">30%</label>
                           <label class="smallItemName">4分占比</label>
-                           <label class="itemName" name="seminarGrade">40%</label>
+                           <label class="itemName" name="seminarGrade" id="bgrade">40%</label>
                           <label class="smallItemName">3分占比</label>
-                           <label class="itemName" name="seminarGrade">30%</label>
+                           <label class="itemName" name="seminarGrade" id="cgrade">30%</label>
                         </div>
                 
                         <div class="item">
-                          <label class="itemName">导入学生名单:</label>
-                          <button class="selectFile">下载文件</button>
+                          <label class="itemName">学生名单:</label>
+                          <button class="selectFile" onclick="downloadfile()">下载文件</button>
                         </div>
                         <div class="item">
-                          <button class="submit">修改</button>
-                          <button class="reset">删除班级</button>
+                          <a class="submit" href="###">修改</a>
+                          <button class="reset" onclick="deleteclass()">删除班级</button>
                           <div class="clear"></div>
                         </div>
                         <div class="item">
