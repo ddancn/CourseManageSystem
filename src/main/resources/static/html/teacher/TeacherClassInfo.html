@@ -16,9 +16,9 @@
             课堂管理系统
           </div>
           <div class="icon">
-            <img src="../../Img/home.png">首页
-            <img src="../../Img/help.png">帮助
-            <img src="../../Img/exit.png">退出
+           <a href="/TeacherHomePage"><img src="../../Img/home.png">首页 </a>
+		<a href="###"><img src="../../Img/help.png">帮助 </a>
+		<a href="/WechatLoginPage"><img src="../../Img/exit.png">退出 </a>
           </div>
           <div class="clear"></div>
         </div>
@@ -68,7 +68,7 @@
                           <button class="selectFile" onclick="downloadfile()">下载文件</button>
                         </div>
                         <div class="item">
-                          <a class="submit" href="###">修改</a>
+                          <a class="submit" href="/TeacherUpdateClass">修改</a>
                           <button class="reset" onclick="deleteclass()">删除班级</button>
                           <div class="clear"></div>
                         </div>
@@ -82,5 +82,8 @@
             </div>
             <div class="clear"></div>
         </div>
+        
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../js/teacher/TeacherClassInfo.js"></script>
 </body>
 </html>
