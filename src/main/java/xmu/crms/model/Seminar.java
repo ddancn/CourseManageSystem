@@ -8,7 +8,21 @@ public class Seminar {
     private String description;
     private String groupingMethod;
     private String startTime;
-    private String endTime;
+    public Seminar(int id, String name, String description, String groupingMethod, String startTime, String endTime,
+			int grade, Topic[] topics, Proportions proportions) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.groupingMethod = groupingMethod;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.grade = grade;
+		this.topics = topics;
+		this.proportions = proportions;
+	}
+	private String endTime;
+    private int grade;
     private Topic[] topics;
     private Proportions proportions;
 
@@ -104,4 +118,10 @@ public class Seminar {
                 ", proportions=" + proportions +
                 '}';
     }
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
 }

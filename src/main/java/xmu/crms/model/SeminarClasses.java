@@ -6,11 +6,23 @@ public class SeminarClasses {
     private int id;
     private String name;
     private String courseName;
+    private String groupingMethod;
     private String startTime;
     private String endTime;
     private Class[] classes;
 
-    public SeminarClasses() {
+    public SeminarClasses(int id, String name, String courseName, String groupingMethod, String startTime,
+			String endTime, Class[] classes) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.courseName = courseName;
+		this.setGroupingMethod(groupingMethod);
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.classes = classes;
+	}
+	public SeminarClasses() {
 
     }
     public SeminarClasses(int id, String name, String courseName,
@@ -82,4 +94,10 @@ public class SeminarClasses {
                 ", classes=" + Arrays.toString(classes) +
                 '}';
     }
+	public String getGroupingMethod() {
+		return groupingMethod;
+	}
+	public void setGroupingMethod(String groupingMethod) {
+		this.groupingMethod = groupingMethod;
+	}
 }
