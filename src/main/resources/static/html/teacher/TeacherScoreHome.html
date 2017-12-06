@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -15,9 +14,9 @@
         课堂管理系统
     </div>
     <div class="icon">
-       <img src="../../Img/home.png">首页
-        <img src="../../Img/help.png">帮助
-        <img src="../../Img/exit.png">退出
+            <a href="/TeacherHomePage"><img src="../../Img/home.png">首页 </a>
+            <img src="../../Img/help.png">帮助
+            <a href="/WechatLoginPage"><img src="../../Img/exit.png">退出</a>
     </div>
     <div class="clear"></div>
 </div>
@@ -32,7 +31,7 @@
         <div class="title">评分</div>
         <div class="returnButton" >返回上一页</div>
         <div class="line"></div>
-        <div class="itemBody">
+        <div id="grouplist" class="itemBody">
             <table class="table table-striped">
                 <thead class="tableTitle">
                 <tr>
@@ -47,45 +46,7 @@
                 </tr>
                 </thead>
                 <tbody class="tableContent">
-                <tr>
-                    <td>A</td>
-                    <td>Bangalore</td>
-                    <td>xxx</td>
-                    <td>5</td>
-                    <td>已提交</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>
-                        <img src="../../Img/view.png" alt="预览">
-                        <img src="../../Img/download.png" alt="下载">
-                    </td>
-                </tr>
-                <tr>
-                    <td>A</td>
-                    <td>Bangalore</td>
-                    <td>xxx</td>
-                    <td>5</td>
-                    <td>已提交</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>
-                         <img src="../../Img/view.png" alt="预览">
-                        <img src="../../Img/download.png" alt="下载">
-                    </td>
-                </tr>
-                <tr>
-                    <td>A</td>
-                    <td>Bangalore</td>
-                    <td>xxx</td>
-                    <td>5</td>
-                    <td>已提交</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>
-                         <img src="../../Img/view.png" alt="预览">
-                        <img src="../../Img/download.png" alt="下载">
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
@@ -93,5 +54,7 @@
 </div>
     <div class="clear"></div>
 </div>
+    <script src="../../../../../../webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../../js/teacher/TeacherScoreHome.js"></script>
 </body>
 </html>

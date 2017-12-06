@@ -13,9 +13,9 @@
             课堂管理系统
           </div>
           <div class="icon">
-            <img src="../../Img/home.png">首页
-           <img src="../../Img/home.png">帮助
-           <img src="../../Img/home.png">退出
+            <a href="/TeacherHomePage"><img src="../../Img/home.png">首页 </a>
+            <img src="../../Img/help.png">帮助
+            <a href="/WechatLoginPage"><img src="../../Img/exit.png">退出</a>
           </div>
           <div class="clear"></div>
         </div>
@@ -28,45 +28,48 @@
             <div class="content">
                 <div class="block">
                     <div class="title">创建讨论课</div>
-                    <div class="returnButton">返回上一页</div>
+                    <div class="returnButton" onclick="window.location.href='/TeacherCourseInformation'" style="cursor:pointer">返回上一页</div>
                     <div class="line"></div>
                     <div class="itemBody">
                         <div class="item">
                           <label class="itemName">讨论课名称:</label>
-                          <input type="text" name="seminarName" class="bigInput">
+                          <input type="text"  id="seminarName" class="bigInput">
                         </div>
                         <div class="item" style="height:40%;">
                           <label class="itemName">讨论课说明:</label>
-                          <textarea class="textStyle"></textarea>
+                          <textarea class="textStyle" id="seminarDescription"></textarea>
                         </div>
                         <div class="item">
                           <label class="itemName">分组方式: </label>
-                          <select class="bigSelect"></select>
+                          <select class="bigSelect" id="groupingMethod">
+                            <option value="fixed">固定分组</option>
+                            <option value="random">随机分组</option>
+                          </select>
                         </div>
                         <div class="item">
                           <label class="itemName">开始时间: </label>
-                          <input type="date" name="startTime" class="timeStyle">
+                          <input type="date"  id="startTime" class="timeStyle">
                           <label class="itemName" style="margin-left: 15%">结束时间: </label>
-                          <input type="date" name="startTime" class="timeStyle">
+                          <input type="date"  id="endTime" class="timeStyle">
                         </div>
                         <div class="item">
                           <label class="itemName">评分规则:</label>
                           <label class="itemName">讨论课分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text"  id="seminarGrade" class="smallInput">
                           <label class="itemName">报告分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text"  id="reportGrade" class="smallInput">
                         </div>
                         <div class="item" style="margin-left: 18%">
                           <label class="itemName">5分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" name="seminarGrade5" class="smallInput">
                           <label class="itemName">4分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" name="seminarGrade4" class="smallInput">
                           <label class="itemName">3分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" name="seminarGrade3" class="smallInput">
                         </div>
                         <div class="item">
-                          <button class="submit">提 交</button>
-                          <button class="reset">重 置</button>
+                          <button class="submit" onclick="createSeminar()" style="cursor:pointer">提 交</button>
+                          <button class="reset" onclick="reset()" style="cursor:pointer">重 置</button>
                           <div class="clear"></div>
                         </div>
                     </div>
@@ -74,5 +77,7 @@
             </div>
             <div class="clear"></div>
         </div>
+    <script src="../../../../../../webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../../js/teacher/TeacherCreateSeminar.js"></script>
 </body>
 </html>

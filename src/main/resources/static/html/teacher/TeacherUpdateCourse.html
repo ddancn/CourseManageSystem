@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head lang="en">
 <meta charset="UTF-8">
-<title>创建课程</title>
+<title>修改课程</title>
 <link href="../../css/teacher/TeacherCreateCoursePage.css"
     rel="stylesheet" type="text/css" />
 
@@ -19,17 +19,13 @@
     </div>
     <div class="body">
         <div class="navigation">
-            <div class="title">导航</div>
+            <div class="title">OOAD</div>
             <div class="line"></div>
-            <div class="courseIntroduction">
-                <a class="guidefont" href="/TeacherHomePage">基本信息</a>
-                 <a class="guidefont" href="/TeacherCourseHomePage">课程信息</a>
-                <a class="guidefont" href="/TeacherCreateCoursePage">新建课程</a>
-            </div>
+
         </div>
         <div class="content">
 
-            <div class="title">创建课程</div>
+            <div class="title">修改课程信息</div>
             <hr class="line" />
 
             <br />
@@ -43,14 +39,14 @@
 
                     <div class="scorerule">
                         <p>
-                            讨论课分数占比:<input type="text" name="seminarscore">报告分数占比：<input
-                                type="text" name="reportscore">
+                            讨论课分数占比:<input type="text" id="seminarGrade">
+                            报告分数占比：<input type="text" id="reportGrade">
                         </p>
 
                         <p>
-                            五分占比:<input type="text" name="five">四分占比：<input
-                                type="text" name="four">三分占比：<input type="text"
-                                name="three">
+                            五分占比:<input type="text" id="seminarGrade5">
+                            四分占比：<input type="text" id="seminarGrade4">
+                            三分占比：<input type="text"  id="seminarGrade3">
                         </p>
                     </div>
 
@@ -59,7 +55,7 @@
                     </form>
                     <div class="buttons">
 
-                        <button class="button" onclick="createCourse()" style="cursor:pointer">提交</button>
+                        <button class="button" onclick="updateCourse()" style="cursor:pointer">提交</button>
                         <button class="button" onclick="reset()" style="cursor:pointer">重置</button>
 
                     </div>
@@ -74,6 +70,6 @@
     <div class="clear"></div>
     <!-- jQuery Js -->
     <script src="../../../../../../webjars/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../../js/teacher/TeacherCreateCourse.js"></script>
+    <script src="../../js/teacher/TeacherUpdateCourse.js"></script>
 </body>
 </html>
