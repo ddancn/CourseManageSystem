@@ -1,43 +1,46 @@
 ﻿/**
  * Created by lenovo on 2017/12/4.
  */
-window.onload = getSeminar();
-	//getCourse();
-var courseID = 12;
+var courseId = 12;
+var groupId = 2;
+
+
+window.onload = function(){
+	getCourse();
+	getSeminar();
+}
+	
 
 //获取课程信息
 function getCourse(){
-	alert("yes!");
+//	alert("yes!");
     var t;
-    var data = {"courseId":courseID};
+
     $.ajax({
         url:"/course/{courseId}" ,
         type:"GET",
-        contentType:"appication/json",
-        data:JSON.stringify(data),
-        success:function(data){
-            alert("获取课程信息成功！" + data);
-            t=data;
-            courseID = t.id;
+        success:function(data){ 
+            t = data;
+            $("#courseName").html("");
+            $("#courseIntroduction").html("");
+            courseId = t.id;
+            $("#courseName").append(t.name);
+            $("#courseIntroduction").append(t.description);
+            alert("获取课程信息成功！" + data.description);
         },
         error:function(){
             alert("获取课程信息失败！");
         }
     });
-    
-    getSeminar();
 }
 
 //获取讨论课信息
 function getSeminar(){
     var seminarlist;
-    var data = {"courseId":courseID};
 
     $.ajax({
-        url:" http://rap2api.taobao.org/app/mock/933/GET/course/222/seminar",//"/course/{courseId}/seminar",
+        url:"/course/{courseId}/seminar",
         type:"GET",
-        contentType:"application/json",
-        data:JSON.stringify(data),
         success:function(data){
             alert("获取讨论课列表成功！" + data);
             seminarlist = data;
@@ -47,14 +50,29 @@ function getSeminar(){
             for(var i in seminarlist) {
                 var item = seminarlist[i];
                 $("#content").append(
-                "<div class=\"block\"><div class=\"blockFont\">" + item.name + "</div>"
-                + item.id, + item.description + item.groupingMethod + item.startTime + item.endTime, + item.grade
+                "<div class=\"block\"><div class=\"blockFont\" id=\"seminar_" 
+                + item.id + "\"><a href=\"/StudentSeminarPage(fixed)\">"
+                + item.name + "</a></div>"             
                 + "</div>"
                 );
-            }//end for
+            }//end for   "
         },
         error:function(){
             alert("获取讨论课列表失败！");
         }
     });
 }
+
+//返回上一页按钮响应函数
+function goback(){
+	window.history.go(-1);  //返回上一页
+}
+
+function gotoseminar(seminarId){
+	$.ajax({
+		url:"/StudentSeminarPage(random)",
+	})
+	
+}
+
+

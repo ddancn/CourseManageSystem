@@ -2,13 +2,13 @@
  * Created by lenovo on 2017/12/4.
  */
 window.onload = getClassInformation;
-var studentId;
+var studentId = 1;
 
 //获取班级信息列表
 function getClassInformation(){
     var classlist;
     $.ajax({
-        url:"http://rap.taobao.org/mockjsdata/29816/get/class",  //"/class",
+        url:"/class",
         type:"GET",
         success:function(data){
             classlist = data;
@@ -45,14 +45,12 @@ function getClassInformation(){
 }
 
 //退课
-function cancelcourse(classid,studentid){
-	var data = {"courseId":classid,"studentId":studentid};
+function cancelcourse(classId,studentid){
+	
 	
     $.ajax({
-        url:"classdel",//"/course/" + classid,
+        url:"/course/{classId}",
         type:"DELETE",
-        contentType:"application/json",
-        data:JSON.stringify(data),
         success:function(data){
             alert("退选课程成功！");
         },

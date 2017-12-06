@@ -1,7 +1,7 @@
 ﻿/**
  * Created by lenovo on 2017/12/4.
  */
-// 页面加载时调用的函数
+// 页面加载时调用的函数，获取已经选择的课程（具体到班级）
 window.onload = getAllClass;
 
 // 测试是否进入
@@ -45,7 +45,7 @@ function getAllClass() {
 									+ "<td class=\"tabletext\">结束时间:XXXX</td>"
 									+ "</tr></table></div></div>");
 				}
-			alert(data);
+			alert("获取已选班级信息成功！" + data);
 		},
 		error : function() {
 			alert("获取班级信息失败！");
@@ -53,7 +53,7 @@ function getAllClass() {
 	})
 }
 
-// 获取符合查询条件的班级信息
+// 获取符合查询条件的班级信息 ，目前没有用到
 function getClassListWithOption() {
 	var classlist;
 	var coursename = document.getElementById("course").value;
@@ -103,12 +103,11 @@ function getClassListWithOption() {
 
 //选课
 function chooseCourse(classid) {
-	var data = {"classId":classid};
+	
 	$.ajax({
-		url : "http://rap2api.taobao.org/app/mock/933/POST/class/34/student", //"/class/" + classid + "/student",
+		url : "/class/" + classid + "/student",//"http://rap2api.taobao.org/app/mock/933/POST/class/34/student", 
 		type : "POST",
-		contentType:"application/json",
-		data : JSON.stringify(data),
+		data : {studentId:2757},
 		success : function(data) {
 			alert("选课成功！" + data);
 		},

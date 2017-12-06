@@ -10,33 +10,57 @@ function setClssId(n){
 }
 
 //页面加载时，获取固定分组名单
-window.onload = getStudentList;
+window.onload = function(){
+	getCourse();
+	getStudentList();
+}
+
+//获取课程信息
+function getCourse(){
+//	alert("yes!");
+    var t;
+
+    $.ajax({
+        url:"/course/{courseId}" ,
+        type:"GET",
+        success:function(data){ 
+            t = data;
+            $("#courseName").html("");
+            $("#courseIntroduction").html("");
+            courseId = t.id;
+            $("#courseName").append(t.name);
+            $("#courseIntroduction").append(t.description);
+            alert("获取课程信息成功！");
+        },
+        error:function(){
+            alert("获取课程信息失败！");
+        }
+    });
+}
 
 //获取固定分组名单
 function getStudentList() {
-    var studentlist;
+    var group;
     $.ajax({
-        url: "/class/" + classId + "/classgroup",
+        url: "/class/{classId}/classgroup",
         type: "GET",
         success: function (data) {
-            studentlist = data;
+            group = data;
             $("#Fixed_group").html("");
-            if (studentlist.length == 0)
-                $("#Fixed_group").html("可选课程列表为空");
-            for (var i in studentlist) {
-                var item = studentlist[i];
-                //如果是队长
-                if (i == 0) {
-                    $("#Fixed_group").append(
-                        "<tr> <th>角色</th> <th>学号</th> <th>姓名</th> <th>操作</th> </tr>" +
-                        "<tr>" +
-                        "<td>队长</td>" +
-                        "<td>" + item.id + "</td>" +
-                        "<td>" + item.name + "</td>" +
-                        "<td></td> </tr>"
-                    )
-                }
-                else if (i % 2 == 1) {
+            if (group.length == 0)
+                $("#Fixed_group").html("固定分组名单为空");
+            $("#Fixed_group").append(
+                    "<tr> <th>角色</th> <th>学号</th> <th>姓名</th> <th>操作</th> </tr>" +
+                    "<tr>" +
+                    "<td>队长</td>" +
+                    "<td>" + group.leader.id + "</td>" +
+                    "<td>" + group.leader.name + "</td>" +
+                    "<td></td> </tr>"
+                )
+            
+                for(var i in group.members){
+                	var item = group.members[i];
+                	if (i % 2 == 1) {
                     $("#Fixed_group").append(
                         "<tr class=\"alt\">" +
                         "<td>队员</td>" +
@@ -56,7 +80,8 @@ function getStudentList() {
                         "</tr>"
                     )
                 }
-            }
+            }//end for
+            alert("获取固定分组名单成功！");
         },
         error: function () {
             alert("获取固定分组名单失败！");
@@ -71,9 +96,9 @@ function search(){
     var studentlist;
 
     $.ajax({
-        url:"/class/" + classId + "/student",
+        url:"/class/{classId}/student",
         type:"GET",
-        data:{classId:classId,
+        data:{
             numBeginWith:num,
             nameBeginWith:nameBegin},
         success:function(data){

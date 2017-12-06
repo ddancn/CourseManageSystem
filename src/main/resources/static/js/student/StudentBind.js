@@ -1,6 +1,11 @@
-/**
+﻿/**
  * 
  */
+window.onload = function(){
+	getSchool();
+	getProvincelist();
+	getCitylist();
+}
 
 
 //绑定，返回一个学生对象
@@ -32,11 +37,10 @@ function bind(){
         data:JSON.stringify(d),   
         async:false,
         success:function(data){
-            alert("绑定成功！");
+            alert("绑定成功！" + data);
         },
-        error:function(re,p2,p3){
-        	console.log(re,p2,p3);
-            alert("绑定失败！" + re);
+        error:function(){
+            alert("绑定失败！");
         }
     });
 
@@ -62,11 +66,11 @@ function checkright(){
         }else if(email == ""){
             warn = "邮箱不能为空！";
         }
-        if(warn !=null && warn.length !=0)
-            alert(warn);
-        else{
-           bind();
-        }
+    }
+    if(warn !=null && warn.length !=0)
+        alert(warn);
+    else{
+       bind();
     }
     
     return false;
@@ -74,14 +78,14 @@ function checkright(){
 
 //检查手机号输入是否正确
 function checktel(){
-    var username = document.getElementById("phoneNum").value;
+    var username = $("#phoneNum").val();
     var mes = "";
-    if (username.length == 0) {
+    if (username.length == 0 || username==null) {
         mes = "用户名不能为空！";
     }
     else if (username.length != 11) {
         mes = "请输入11位手机号作为用户名！";
-        document.getElementById("phoneNum").value="";
+        $("#phoneNum").html="";
     }
     else{
         var PATTERN_CHINAMOBILE = /^1(3[4-9]|5[012789]|8[23478]|4[7]|7[8])\d{8}$/; //移动号
@@ -109,4 +113,71 @@ function judgesex() {
         gender = "femala";
     }
     return gender;
+}
+
+//获取学校列表
+function getSchool(){
+	var schoollist;
+	
+	$.ajax({
+		url:"/school",
+		type:"GET",
+		success:function(data){
+			schoollist = data;
+			$("#school").html="";
+			for(var i in schoollist){
+				var item = schoollist[i];
+				$("#school").append("<option value=\""
+						+ item.name + "\">"
+						+ item.name + "</option>");
+			}//end for
+		},
+		error:function(){
+			alert("获取学校列表失败！");
+		}
+	});
+}
+
+//获取省份列表
+function getProvincelist(){
+	var provincelist;
+	$.ajax({
+		url:"/school/province",
+		type:"GET",
+		success:function(data){
+			provincelist = data;
+			$("province").html="";
+			for(var i in provincelist){
+				var item = provincelist[i];
+				$("#province").append("<option value=\""
+						+ item + "\">"
+						+ item + "</option>")
+			}//end for
+		},
+		error:function(){
+			alert("获取省份列表失败！");
+		}
+	});
+}
+
+//获取市列表
+function getCitylist(){
+	var citylist;
+	$.ajax({
+		url:"/school/city",
+		type:"GET",
+		success:function(data){
+			provincelist = data;
+			$("#city").html="";
+			for(var i in provincelist){
+				var item = provincelist[i];
+				$("#city").append("<option value=\""
+						+ item + "\">"
+						+ item + "</option>")
+			}//end for
+		},
+		error:function(){
+			alert("获取城市列表失败！");
+		}
+	});
 }
