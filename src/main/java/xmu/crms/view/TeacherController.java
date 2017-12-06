@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.Controller;
 
 import xmu.crms.model.Teacher;
 
-@RestController
-@RequestMapping("/Teacher")
+@Controller
+@RequestMapping
 public class TeacherController {
 
 	//微信登陆
     @RequestMapping(value="/WechatLoginPage", method=RequestMethod.GET)
     void Wechat(HttpServletResponse response) throws IOException {
-    	response.sendRedirect("html/teacher/WechatLoginPage.html");
+    	response.sendRedirect("html/common/WechatLoginPage.html");
 	}
   //账号密码登录
     @RequestMapping(value="/AccountLoginPage", method=RequestMethod.GET)
     void Account(HttpServletResponse response) throws IOException {
-    	response.sendRedirect("html/teacher/AccountLoginPage.html");
+    	response.sendRedirect("html/common/AccountLoginPage.html");
 	}
     //注册
     @RequestMapping(value="/RegisterPage", method=RequestMethod.GET)
     void Register(HttpServletResponse response) throws IOException {
-    	response.sendRedirect("html/teacher/RegisterPage.html");
+    	response.sendRedirect("html/common/RegisterPage.html");
 	}
     //老师绑定
     @RequestMapping(value="/TeacherBindPage", method=RequestMethod.GET)
