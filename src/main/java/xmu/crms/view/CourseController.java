@@ -72,39 +72,36 @@ public class CourseController {
 		clas.setId(45);
 		return clas.getId();//假的
 	}
-/////////////////////////////////////siminar里面无grade//////////////////////////////////////////////////////////////////////////////////////////
+
 	//按ID获取课程的讨论课列表
 	@RequestMapping(value="/{courseId}/seminar", method=RequestMethod.GET)
 	public List<Seminar> getSeminarList(@PathParam("courseId") Integer courseId, boolean embedGrade){
 		List<Seminar> seminarlist=new ArrayList<Seminar>();//假的
-		seminarlist.add(new Seminar( 29,"界面原型设计","界面原型设计", "fixed","2017-09-25","2017-10-09", null,null));
+		seminarlist.add(new Seminar( 29,"界面原型设计","界面原型设计", "fixed","2017-09-25","2017-10-09",4, null,null));
+		seminarlist.add(new Seminar( 32,"概要设计","界面原型设计", "模型层与数据库设计","2017-10-10", "2017-10-24",5, null,null));
 		return seminarlist;
 	}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
 	@RequestMapping(value="/{courseId}/seminar", method=RequestMethod.POST)
 	public int createSeminar(@PathParam("courseId") Integer courseId, @RequestBody Seminar seminar){
 		seminar.setId(32);
 		return seminar.getId();
 	}
-/////////////////////////////////////	无"groupingMethod": "fixed",//////////////////////////////////////////////////////////////////////////
-	 //获取课程正在进行的讨论课
+//获取课程正在进行的讨论课
     @RequestMapping(value="/{courseId}/seminar/current", method=RequestMethod.GET)
     public SeminarClasses getCurrentSeminar(@PathParam("courseId") Integer courseId){ 
     	Class clas[]=new Class[2];
     	clas[0]=new Class(   53,"周三12", courseId, null, null, courseId, null, null);
     	clas[1]=new Class(   57,"周三34", courseId, null, null, courseId, null, null);
-        return new SeminarClasses(  29,"界面原型设计","OOAD","2017-09-25","2017-10-09",clas);
+        return new SeminarClasses(  29,"界面原型设计","OOAD","fixed","2017-09-25","2017-10-09",clas);
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-/////////////////////////////////////    无"seminarName": "需求分析",//////////////////////////////////////////////////////////////////////////
-    //按课程ID获取学生的所有讨论课成绩
+ //按课程ID获取学生的所有讨论课成绩
    @RequestMapping(value="/{courseId}/grade", method=RequestMethod.GET)
    public List<SeminarGradeDetail> getGradeListByCourseId(@PathParam("courseId") Integer courseId){ 
 	   List<SeminarGradeDetail> list=new ArrayList<SeminarGradeDetail>();
-	   list.add(new SeminarGradeDetail( "3A2","张三",3,4,4));
-	   list.add(new SeminarGradeDetail( "3A3","张三",4,4,4));
+	   list.add(new SeminarGradeDetail( "需求分析","3A2","张三",3,4,4));
+	   list.add(new SeminarGradeDetail( "需求分析","3A3","张三",4,4,4));
        return list;
    }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

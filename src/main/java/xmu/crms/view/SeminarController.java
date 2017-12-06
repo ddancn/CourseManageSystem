@@ -25,7 +25,9 @@ public class SeminarController {
 	//按ID获取讨论课，传入讨论课id，返回讨论课对象
 	@RequestMapping(value="/{seminarId}", method=RequestMethod.GET)
 	public Seminar getSeminarById(@PathParam("seminarId") Integer seminarId){
-		Seminar seminar=new Seminar();//假的
+		Topic topic[]=new Topic[1];
+		topic[0]=new Topic( 257,null,"领域模型与模块",  null, seminarId, seminarId, seminarId);
+		Seminar seminar=new Seminar(32,"概要设计","模型层与数据库设计","fixed","2017-10-10","2017-10-24",topic,null);//假的
 		return seminar;
 	}
 	
@@ -44,14 +46,14 @@ public class SeminarController {
 	//按ID获取与学生有关的讨论课信息
 	@RequestMapping(value="/{seminarId}/my", method=RequestMethod.GET)
     public StudentSeminar getStudentSeminarById(@PathParam("seminarId") Integer seminarId){
-	    StudentSeminar seminar=new StudentSeminar();//假的
+	    StudentSeminar seminar=new StudentSeminar(32,"概要设计","random","OOAD","2017-10-11","2017-10-24",23,true,true);//假的
         return seminar;
     }	
 	
 	 //按ID获取讨论课详情
     @RequestMapping(value="/{seminarId}/detail", method=RequestMethod.GET)
     public SeminarDetail getSeminarDetailById(@PathParam("seminarId") Integer seminarId){
-        SeminarDetail seminar=new SeminarDetail();//假的
+        SeminarDetail seminar=new SeminarDetail(32,"概要设计","2017-10-10","2017-10-24","海韵201","邱明","mingqiu@xmu.edu.cn");//假的
         return seminar;
     }   
     
@@ -59,13 +61,14 @@ public class SeminarController {
 	@RequestMapping(value="/{seminarId}/topic", method=RequestMethod.GET)
 	public List<Topic> getTopicList(@PathParam("seminarId") Integer seminarId){
 		List<Topic> topiclist=new ArrayList<Topic>();//假的
-		topiclist.add(new Topic());//测试
+		topiclist.add(new Topic(257,"A","领域模型与模块","Domain model与模块划分",5,6,2));//测试
 		return topiclist;
 	}
 	
 	//在指定ID的讨论课创建话题
 	@RequestMapping(value="/{seminarId}/topic", method=RequestMethod.POST)
 	public int createTopic(@PathParam("seminarId") Integer seminarId, @RequestBody Topic topic){	
+		topic.setId(257);
 		return topic.getId();
 	}
 	
@@ -75,6 +78,10 @@ public class SeminarController {
 	public List<Group> getGroupListBySeminarId(
 			@PathParam("seminarId") Integer seminarId,boolean gradeable, int classId){	
 		List<Group> groupList=new ArrayList<Group>();
+		Topic topic[]=new Topic[1];
+		topic[0]=new Topic( 257,null,"领域模型与模块",  null, seminarId, seminarId, seminarId);
+		groupList.add(new Group(28,"1A1",null, null, topic, null, null));
+		groupList.add(new Group(29,"1A2",null, null, topic, null, null));
 		return groupList;
 	}
 	
