@@ -28,7 +28,7 @@ public class TopicController {
 
 	//按ID修改话题，传入话题id和json
 	@RequestMapping(value="/{topicId}", method=RequestMethod.PUT)
-	@ResponseStatus(value=HttpStatus.CREATED)
+	@ResponseStatus(value=HttpStatus.NO_CONTENT)
 	public void updateTopicById(@PathParam("topicId") Integer topicId, @RequestBody Topic topic){
 	}
 	

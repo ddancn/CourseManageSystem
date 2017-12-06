@@ -3,6 +3,7 @@ package xmu.crms.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
 
 import org.springframework.http.HttpStatus;
@@ -34,9 +35,10 @@ public class CourseController {
 	
 	//创建课程，传入json，返回课程id
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public int createCourse(@RequestBody Course course){	
+	public Course createCourse(@RequestBody Course course, HttpServletResponse response){	
 		course.setId(23);
-		return course.getId();//假的
+		response.setStatus(201);
+		return course;//假的
 	}
 	
 	//按ID获取课程，传入课程id，返回课程对象
@@ -59,18 +61,19 @@ public class CourseController {
 		
 	//按ID获取课程的班级列表
 	@RequestMapping(value="/{courseId}/class", method=RequestMethod.GET)
-	public List<Class> getClassListByCourseId(@PathParam("courseId") Integer courseId){
+	public List<Class> getClassListByCourseId(){//TODO
 		List<Class> classList=new ArrayList<Class>();
-		classList.add(new Class( 45,"周三1-2节", courseId, null, null, courseId, null, null));
-		classList.add(new Class( 48,"周三3-4节", courseId, null, null, courseId, null, null));
+		classList.add(new Class( 45,"周三1-2节", 1, null, null, 1, null, null));
+		classList.add(new Class( 48,"周三3-4节", 1, null, null, 1, null, null));
 		return classList;
 	}
 	
 	//在指定ID的课程创建班级
 	@RequestMapping(value="/{courseId}/class", method=RequestMethod.POST)
-	public int createTopic(@PathParam("courseId") Integer courseId, @RequestBody Class clas){	
+	public Class createTopic(@PathParam("courseId") Integer courseId, @RequestBody Class clas, HttpServletResponse response){	
 		clas.setId(45);
-		return clas.getId();//假的
+		response.setStatus(201);
+		return clas;//假的
 	}
 
 	//按ID获取课程的讨论课列表
@@ -82,17 +85,20 @@ public class CourseController {
 		return seminarlist;
 	}
     
+	//在课程创建讨论课
 	@RequestMapping(value="/{courseId}/seminar", method=RequestMethod.POST)
-	public int createSeminar(@PathParam("courseId") Integer courseId, @RequestBody Seminar seminar){
+	public Seminar createSeminar(@PathParam("courseId") Integer courseId, @RequestBody Seminar seminar, HttpServletResponse response){
 		seminar.setId(32);
-		return seminar.getId();
+		response.setStatus(201);
+		return seminar;
 	}
-//获取课程正在进行的讨论课
+	
+	//获取课程正在进行的讨论课
     @RequestMapping(value="/{courseId}/seminar/current", method=RequestMethod.GET)
-    public SeminarClasses getCurrentSeminar(@PathParam("courseId") Integer courseId){ 
-    	Class clas[]=new Class[2];
-    	clas[0]=new Class(   53,"周三12", courseId, null, null, courseId, null, null);
-    	clas[1]=new Class(   57,"周三34", courseId, null, null, courseId, null, null);
+    public SeminarClasses getCurrentSeminar(){ //TODO
+        Class clas[]=new Class[2];
+        clas[0]=new Class(   53,"周三12", 1, null, null, 1, null, null);
+        clas[1]=new Class(   57,"周三34", 1, null, null, 1, null, null);
         return new SeminarClasses(  29,"界面原型设计","OOAD","fixed","2017-09-25","2017-10-09",clas);
     }
     

@@ -3,6 +3,7 @@ package xmu.crms.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
 
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import xmu.crms.model.CourseClass;
 import xmu.crms.model.Proportions;
 import xmu.crms.model.Student;
 import xmu.crms.model.Teacher;
+import xmu.crms.model.Url;
 import xmu.crms.model.User;
 
 @RestController
@@ -32,8 +34,8 @@ public class ClassController {
 		tea1.setName("邱明");
 		Teacher tea2=new Teacher ();
 		tea2.setName("杨律青");
-		list.add(new CourseClass( 23,"周三1-2节",60,"周三1-2、周五1-2","公寓405","OOAD",tea1));
-		list.add(new CourseClass( 42,"一班",60,"周三34节 周五12节","海韵202",".Net 平台开发",tea2));
+		list.add(new CourseClass( 23,"周三1-2节",60,"周三1-2、周五1-2","公寓405","OOAD","邱明"));
+		list.add(new CourseClass( 42,"一班",60,"周三34节 周五12节","海韵202",".Net 平台开发","杨律青"));
 		return list;
 	}
 
@@ -74,13 +76,14 @@ public class ClassController {
 		return studentList;//是否要分student和teacher
 	}
 	
-	//学生按ID选择班级，TODO
+	//学生按ID选择班级
 	@RequestMapping(value="/{classId}/student", method=RequestMethod.POST)
-	public String chooseClass(@PathParam("classId") Integer classId, int studentId){
-	    String url="/class/34/student/2757";
-	      return url;
+	public Url chooseClass(@PathParam("classId") Integer classId,@RequestBody Student student, HttpServletResponse response){
+	    Url url2=new Url("/class/34/student/2757");
+	    response.setStatus(201);
+	     return url2;
 	}
-	
+
 	//学生按ID取消选择班级
 	@RequestMapping(value="/{classId}/student/{studentId}", method=RequestMethod.DELETE)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
@@ -99,24 +102,24 @@ public class ClassController {
 	//班级小组组长辞职
 	@RequestMapping(value="/{classId}/classgroup/resign", method=RequestMethod.PUT)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
-	public void resign(@PathParam("classId") Integer classId, int studentId){
+	public void resign(@PathParam("classId") Integer classId, @RequestBody Student student){
 	}
 	
 	 //成为班级小组组长
     @RequestMapping(value="/{classId}/classgroup/assign", method=RequestMethod.PUT)
     @ResponseStatus(value=HttpStatus.NO_CONTENT)
-    public void assign(@PathParam("classId") Integer classId, int studentId){
+    public void assign(@PathParam("classId") Integer classId, @RequestBody Student student){
     }
     
     //添加班级小组成员
     @RequestMapping(value="/{classId}/classgroup/add", method=RequestMethod.PUT)
     @ResponseStatus(value=HttpStatus.NO_CONTENT)
-    public void add(@PathParam("classId") Integer classId, int studentId){
+    public void add(@PathParam("classId") Integer classId, @RequestBody Student student){
     }
     
     //移除班级小组成员
     @RequestMapping(value="/{classId}/classgroup/remove", method=RequestMethod.PUT)
     @ResponseStatus(value=HttpStatus.NO_CONTENT)
-    public void remove(@PathParam("classId") Integer classId, int studentId){
+    public void remove(@PathParam("classId") Integer classId, @RequestBody Student student){
     }
 }

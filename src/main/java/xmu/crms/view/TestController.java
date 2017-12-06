@@ -16,7 +16,7 @@ public class TestController {
 	//以URL请求返回静态资源
     @RequestMapping(value="/hello", method=RequestMethod.GET)
     void hello(HttpServletResponse response) throws IOException {
-    	response.sendRedirect("hellospring.html");
+    	response.sendRedirect("html/hellospring.html");
 	}
 	 
     //以URL请求返回字符串

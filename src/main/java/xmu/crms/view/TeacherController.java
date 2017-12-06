@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping
 public class TeacherController {
 
-	//微信登陆
+    //微信登陆
     @RequestMapping(value="/WechatLoginPage", method=RequestMethod.GET)
     void Wechat(HttpServletResponse response) throws IOException {
-    	response.sendRedirect("html/common/WechatLoginPage.html");
-	}
-  //账号密码登录
+        response.sendRedirect("html/common/WechatLoginPage.html");
+    }
+   //账号密码登录
     @RequestMapping(value="/AccountLoginPage", method=RequestMethod.GET)
     void Account(HttpServletResponse response) throws IOException {
-    	response.sendRedirect("html/common/AccountLoginPage.html");
-	}
+        response.sendRedirect("html/common/AccountLoginPage.html");
+    }
     //注册
     @RequestMapping(value="/RegisterPage", method=RequestMethod.GET)
     void Register(HttpServletResponse response) throws IOException {
@@ -92,9 +92,9 @@ public class TeacherController {
     	response.sendRedirect("html/teacher/TeacherScoreReportPage.html");
 	}
     //老师讨论课信息
-    @RequestMapping(value="/TeacherSenimarInfo", method=RequestMethod.GET)
+    @RequestMapping(value="/TeacherSeminarInfo", method=RequestMethod.GET)
     void TeacherSeminarInfo(HttpServletResponse response) throws IOException {
-    	response.sendRedirect("html/teacher/TeacherSenimarInfo.html");
+    	response.sendRedirect("html/teacher/TeacherSeminarInfo.html");
 	}
     //老师讨论课课后查询话题
     @RequestMapping(value="/TeacherTopicCheckAfter", method=RequestMethod.GET)
@@ -121,4 +121,9 @@ public class TeacherController {
     void TeacherUpdateTopic(HttpServletResponse response) throws IOException {
     	response.sendRedirect("html/teacher/TeacherUpdateTopic.html");
 	}
+    //老师修改课课程
+    @RequestMapping(value="/TeacherUpdateCourse", method=RequestMethod.GET)
+    void TeacherUpdateCourse(HttpServletResponse response) throws IOException {
+        response.sendRedirect("html/teacher/TeacherUpdateCourse.html");
+    }
 }
