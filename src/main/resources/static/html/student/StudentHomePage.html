@@ -12,9 +12,9 @@
         		课堂管理系统
         	</div>
         	<div class="icon">
-        		<img src="../../Img/home.png">首页
-        		<img src="../../Img/help.png">帮助
-        		<img src="../../Img/exit.png">退出
+        		<a href="/StudentCourseHome"><img src="../../Img/home.png">首页</a>
+			<a href="###"><img src="../../Img/help.png">帮助</a>
+			<a href="WechatLoginPage"><img src="../../Img/exit.png">退出</a>
         	</div>
         	<div class="clear"></div>
     	</div>
@@ -22,7 +22,8 @@
             <div class="navigation">
                 <div class="title">导航</div>
                 <div class="line"></div>
-                <div class="courseIntroduction"><a class="guidefont" href="StudentHomePage.html">基本信息</a>
+                <div class="courseIntroduction">
+                <a class="guidefont" href="StudentHomePage.html">基本信息</a>
                   <a class="guidefont" href="StudentCourseInformation.html">课程信息</a>
                   <a class="guidefont" href="StudentChooseCoursePage.html">选择课程</a>
                 </div>
@@ -45,7 +46,7 @@
         </tr>
         <tr class="itemName">
         <td>学校：<span id="school">12345678978</span></td>
-        <td>学历：<span id="education">12345678978</span></td>
+        <td>学历：<span id="education">本科</span></td>
         </tr>
         <tr class="itemName">
         <td>E-mail：<span id="email">12345678978</span></td>
@@ -56,9 +57,10 @@
         <br/>
         <br/>
         <br/>
-        <div class="button">
-        <button onclick="modify()">修改</button>
-        </div>
+        <div class="button" ><a href="/StudentInfoModifyPage">
+     
+                修改
+        </a></div>
         </div>
             </div>
             
@@ -66,6 +68,7 @@
             <div class="clear"></div>
         </div>
         
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script src="../../js/student/StudentHome.js"></script>
 </body>
 </html>
