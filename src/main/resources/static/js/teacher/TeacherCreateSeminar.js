@@ -27,11 +27,12 @@ function createSeminar(){
 		data: JSON.stringify(newSeminar),
 		success: function(data)
 		{
-				alert("添加成功"+data);
+				alert("创建成功"+data);
+				window.location.href="/TeacherCourseInformation";
 		},
 		error:function()
 		{
-			alert("添加失败");
+			alert("创建失败");
 		}
 		});	
 	
@@ -41,8 +42,8 @@ function checkinput(){
     var warn = "";
     var name =$("#seminarName").val();
     var description = $("#seminarDescription").val();
-    var begintime = $("#starttime").val();
-    var endtime = $("#endtime").val();
+    var begintime = $("#startTime").val();
+    var endtime = $("#endTime").val();
     var report = $("#reportGrade").val();
 	var presentation= $("#seminarGrade").val();
 	var c = $("#seminarGrade3").val();

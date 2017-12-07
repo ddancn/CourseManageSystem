@@ -4,10 +4,10 @@
 }(jQuery));
 
 function init(){
-	var id;
+	var id=1;
 	//获取左侧课程基本信息	
 	$.ajax({			
-		url: "/course/"+id,
+		url: "/course/" + id,
 		type: "GET",
 		data: {},
 		async: false,
@@ -49,7 +49,7 @@ function init(){
 		},
 		error:function()
 		{
-			alert("获取课程信息失败");
+			alert("获取讨论课信息失败");
 		}
 		});
 	//获取话题元素
@@ -78,10 +78,10 @@ function init(){
 //点击话题
 function concreteTopic()
 {
-	window.location.href='StudentViewTopicPage(fixed).html';
+	window.location.href="/StudentViewTopicPage(fixed)";
 }
 //点击查看分数
 function viewGrade()
 {
-	window.location.href='StudentViewGradePage.html';
+	window.location.href="/StudentViewGradePage";
 }

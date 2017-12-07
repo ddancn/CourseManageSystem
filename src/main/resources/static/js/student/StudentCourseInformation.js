@@ -69,9 +69,7 @@ function goback(){
 }
 
 function gotoseminar(seminarId){
-	$.ajax({
-		url:"/StudentSeminarPage(random)",
-	})
+	window.location.href="/StudentSeminarPage(fixed)";
 	
 }
 

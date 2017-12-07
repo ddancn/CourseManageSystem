@@ -97,28 +97,28 @@ function deleteSeminar()
 //返回上一层
 function back()
 {
-	window.location.href='TeacherCourseInformation.html';
+	window.location.href='/TeacherCourseInformation';
 }
 //跳转评分界面
 function score()
 {
-	window.location.href='TeacherScoreHome.html';
+	window.location.href='/TeacherScoreHome';
 }
 //修改
 function modifySeminar()
 {
-		window.location.href='TeacherCreateSeminar.html';
+		window.location.href='/TeacherUpdateSeminar';
 }
 
 //点击话题
 function concreteTopic()
 {
-	window.location.href='TeacherTopicCheckBefore.html';
+	window.location.href='/TeacherTopicCheckBefore';
 }
 //添加话题
 function addTopic()
 {
-	window.location.href='TeacherCreateTopic.html';
+	window.location.href='/TeacherCreateTopic';
 }
 
 

@@ -82,10 +82,11 @@ function submit()
 		success: function(data)
 		{
 				alert("修改成功"+data);
+				window.location.href='/TeacherSeminarInfo';
 		},
 		error:function()
 		{
-			alert("添加失败");
+			alert("修改失败");
 		}
 		});	
 }

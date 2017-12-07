@@ -12,11 +12,11 @@ function init(){
 			for(var i in courselist){
 			var course=courselist[i];
 			$("#courselist").append(
-					"<div class='main_box_right_content'>" + 
+					"<div id='class"+course.id+"'class='main_box_right_content'>" + 
 					"<h3 class='classtitle'>" +
 						"<a href='/TeacherCourseInformation'>"+course.name +"</a>"+ 
-						"<button onclick='deleteCourse(courselist.id)' style='cursor:pointer'>删除课程</button>" +
-						"<button onclick='updateCourse(courselist.id)' style='cursor:pointer'>修改课程</button>" +
+						"<button onclick='deleteCourse("+course.id+")' style='cursor:pointer'>删除课程</button>" +
+						"<button onclick='updateCourse("+course.id+")' style='cursor:pointer'>修改课程</button>" +
 					"</h3><hr />"+
 					"<div class='classinfo'>" +
 						"<table class='table'>" +
@@ -53,7 +53,8 @@ function deleteCourse(id){
 		data: {},
 		success: function(data,status)
 		{
-			alert("删除成功"+status);
+			alert("删除成功"+status+id);
+			$("#class"+id).remove();
 		},
 		error:function()
 		{

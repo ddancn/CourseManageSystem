@@ -60,6 +60,7 @@ function createschool(){
         data:JSON.stringify(data),
         success:function(data){
             alert("创建学校成功！" + data);
+            window.location.href="/TeacherBindPage";
         },
         error:function(){
             alert("创建学校失败！");

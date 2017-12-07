@@ -109,6 +109,7 @@ function chooseCourse(classid) {
 		type : "POST",
 		data : {studentId:2757},
 		success : function(data) {
+			window.location.href="/StudentChooseCoursePage";
 			alert("选课成功！" + data);
 		},
 		error : function() {

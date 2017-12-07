@@ -18,11 +18,12 @@ function createTopic(){
 		data: JSON.stringify(newTopic),
 		success: function(data)
 		{
-				alert("添加成功"+data);
+				alert("创建成功"+data);
+				window.location.href="/TeacherSeminarInfo";
 		},
 		error:function()
 		{
-			alert("添加失败");
+			alert("创建失败");
 		}
 		});	
 	

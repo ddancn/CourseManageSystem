@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 window.onload=init;
 
 function init(){
@@ -44,13 +48,10 @@ function changePersonInfo(){
 
 	if(!checkinput())
 		return ;
-	var gender=transfersex($("#sex").val());
-	if(gender=="false") 
-		return ;
 	var modifyinfo={
 			"number":$("#idnum").val(),
 			"name":$("#name").val(),
-			"gender":gender,
+			"gender":transfersex($("#sex").val()),
 			"school":$("#school").val(),
 			"title":$("#sex").val(),
 			"email":$("#email").val(),
@@ -65,9 +66,9 @@ function changePersonInfo(){
 		data: JSON.stringify(modifyinfo),
 		async: false,
 		success: function(data,status)
-		{
-				alert("修改成功"+status);
-				window.location.href="/TeacherHomePage";
+		{						
+			alert("修改成功"+status);
+			window.location.href="/StudentHomePage";
 		},
 		error:function()
 		{
@@ -85,7 +86,7 @@ function checkinput(){
         if(name == ""){
             warn = "姓名不能为空。";
         }else if(number == ""){
-            warn = "教工号不能为空。";
+            warn = "学号不能为空。";
         }else if( school  == ""){
             warn = "学校不能为空。";
         }
@@ -106,11 +107,11 @@ function  transfersex() {
         gender = "male";
     }
     else if(sex=="女"){
-        gender = "female";
+        gender = "femala";
     }
     else {
-    	alert("性别请输男或女。")
-    	gender = "false";
+    	alert("性别请输男或女。");
+    	return false;
     }
     return gender;
 }

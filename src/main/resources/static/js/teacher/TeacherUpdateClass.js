@@ -93,10 +93,11 @@ function createClass(){
 		success: function(data)
 		{
 				alert("修改成功"+data);
+				window.location.href="/TeacherClassInfo";
 		},
 		error:function()
 		{
-			alert("添加失败");
+			alert("修改失败");
 		}
 		});	
 	

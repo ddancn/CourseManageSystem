@@ -44,7 +44,7 @@ function getClassInfo() {
             for (var i in classlist) {
                 var item = classlist[i];
                 $("#classlist").append("<div class=\"block\"><div class=\"blockFont\" id=\"class"
-                    + item.id + "\"><a href=\"/TeacherClssInfo\">"
+                    + item.id + "\"><a href=\"/TeacherClassInfo\">"
                     + item.name + "</a></div></div>");
             }//end for
             $("#classlist").append(" <div class=\"block\">"

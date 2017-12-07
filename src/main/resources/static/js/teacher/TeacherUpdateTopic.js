@@ -74,6 +74,7 @@ function submit()
 		success: function(data)
 		{
 				alert("修改成功"+data);
+				window.location.href="/TeacherTopicCheckBefore";
 		},
 		error:function()
 		{

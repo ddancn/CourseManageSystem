@@ -38,6 +38,7 @@ function bind(){
         async:false,
         success:function(data){
             alert("绑定成功！" + data);
+            window.location.href="/StudentHomePage";
         },
         error:function(){
             alert("绑定失败！");

@@ -1,7 +1,13 @@
 ﻿/**
  * Created by lenovo on 2017/12/4.
  */
-window.onload = getClassInformation;
+window.onload = function(){
+	getClassInformation();
+	$( $("div").children().bind('click',function(){
+		window.location.href="/StudentCourseInformation";
+
+	}));
+}
 var studentId = 1;
 
 //获取班级信息列表
@@ -19,7 +25,7 @@ function getClassInformation(){
             {
                 var item = classlist[i];
                 $("#content").append(
-                "<div class=\"main_box_right_content\" > "+
+                "<div class=\"main_box_right_content\" id=\"class" + item.id + "\"> "+
                 "<h3 class=\"classtitle\">" +
                 "<span>" + item.courseName + "</span>" +
                 "<button onclick='cancelcourse(" + item.id + "," + studentId + ")'>退选课程</button>" +
@@ -46,16 +52,20 @@ function getClassInformation(){
 
 //退课
 function cancelcourse(classId,studentid){
-	
-	
+
+
+	var  t= "class" +classId;
     $.ajax({
         url:"/course/{classId}",
         type:"DELETE",
         success:function(data){
+        	$("#class" + classId).remove();
             alert("退选课程成功！");
+//            window.location.href="/StudentCourseHome";
         },
         error: function () {
             alert("退选课程失败！");
         }
     })
 }
+

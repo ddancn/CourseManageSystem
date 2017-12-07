@@ -65,6 +65,7 @@ function deleteTopic()
 		success: function(data)
 		{
 			alert("删除成功"+data);
+			window.location.href='/TeacherSeminarInfo';
 		},
 		error:function()
 		{

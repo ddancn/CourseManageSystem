@@ -37,6 +37,7 @@ function bind(){
         async:false,
         success:function(data){
             alert("绑定成功！" + data);
+            window.location.href="/TeacherHomePage";
         },
         error:function(){
             alert("绑定失败！");
