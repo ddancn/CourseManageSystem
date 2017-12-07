@@ -4,9 +4,10 @@
 }(jQuery));
 
 function init(){
+	var id;
 	//获取左侧课程基本信息	
 	$.ajax({			
-		url: "http://rap2api.taobao.org/app/mock/933/GET/course ",
+		url: "/course/"+id,
 		type: "GET",
 		data: {},
 		async: false,
@@ -19,7 +20,7 @@ function init(){
 			);
 			//获取线下的课程介绍
 			$("div.navigation").append(
-				   "<div class='courseIntroduction'>ooad is xxx</div>"			
+					"<div class='courseIntroduction'>"+courseInfo.description+"</div>"						
 			);
 		},
 		error:function()
@@ -30,7 +31,7 @@ function init(){
 	
 	//获取讨论课基本信息	
 	$.ajax({			
-		url: " http://rap2api.taobao.org/app/mock/933/GET/course/222/seminar",
+		url: "/seminar/"+id,
 		type: "GET",
 		data: {},
 		async: false,
@@ -52,33 +53,44 @@ function init(){
 			alert("获取课程信息失败");
 		}
 		});
-	//获取话题和小组信息
+	//获取选取该话题的小组信息
 	$.ajax({			
-		url: "http://rap2api.taobao.org/app/mock/933/GET/group/28?embedTopics=true",
+		url: "/group/"+id,
 		type: "GET",
 		data: {},
 		async: false,
 		success: function(data)
 		{
-			var info=data;//要写成数组
+			var groupInfo=data;//要写成数组
 			//获取选择主题名字
-			for(var i in info.topics)
-			$("label#topic").append(info.topics[0].name);
+			for(var i in groupInfo.topics)
+			$("label#topic").append(groupInfo.topics[0].name);
 			//获取组号
-			$("label#id").append(info.id);
+			$("label#id").append(groupInfo.id);
 			//获取组长
-			$("label#leader").append(info.leader.name);
+			$("label#leader").append(groupInfo.leader.name);
 			//获取组员
-			for(var j in info.members)
-			$("label#members").append("<label class='itemName'>"+info.members[j].name+"</label>&nbsp;");
-			for(var i in info.topics)
+			for(var j in groupInfo.members)
+			$("label#members").append("<label class='itemName'>"+groupInfo.members[j].name+"</label>&nbsp;");
+			for(var i in groupInfo.topics)
 			{
-				$("div.blockBody").append("<div class='smallblock'><div class='blockFont'>话题"+(i+1)+"</div></div>")
+				$("div.blockBody").append("<div class='smallblock'><div class='blockFont' style='cursor:pointer' onclick='concreteTopic()'>话题"+(i+1)+"</div></div>")
 			}
 		},
 		error:function()
 		{
-			alert("获取课程信息失败");
+			alert("获取小组信息失败");
 		}
 		});
+}
+
+//点击话题
+function concreteTopic()
+{
+	window.location.href='StudentViewTopicPage(fixed).html';
+}
+//点击查看分数
+function viewGrade()
+{
+	window.location.href='StudentViewGradePage.html';
 }

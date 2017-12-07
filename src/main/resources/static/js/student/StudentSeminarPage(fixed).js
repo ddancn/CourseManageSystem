@@ -4,9 +4,10 @@
 }(jQuery));
 
 function init(){
+	var id;
 	//获取左侧课程基本信息	
 	$.ajax({			
-		url: "http://rap2api.taobao.org/app/mock/933/GET/course ",
+		url: "/course/"+id,
 		type: "GET",
 		data: {},
 		async: false,
@@ -19,7 +20,7 @@ function init(){
 			);
 			//获取线下的课程介绍
 			$("div.navigation").append(
-				   "<div class='courseIntroduction'>ooad is xxx</div>"			
+					"<div class='courseIntroduction'>"+courseInfo.description+"</div>"						
 			);
 		},
 		error:function()
@@ -29,7 +30,7 @@ function init(){
 		});
 	//获取讨论课基本信息	
 	$.ajax({			
-		url: " http://rap2api.taobao.org/app/mock/933/GET/course/222/seminar",
+		url: "/seminar/"+id,
 		type: "GET",
 		data: {},
 		async: false,
@@ -53,22 +54,34 @@ function init(){
 		});
 	//获取话题元素
 	$.ajax({			
-		url: "/number",
+		url: "/seminar/"+id,
 		type: "GET",
 		data: {},
 		async: false,
 		success: function(data)
 		{
-			var number=data.id;//要写成数组
-			var i = 0;
-			for(i;i<number;i++)
-				{
-					$("div.blockBody").append("<div class='smallblock'><div class='blockFont'>话题"+(i+1)+"</div></div>")
-				}
+			var number=data.topics.length;
+			var i =number;
+			for(i;i>0;i--)
+			{
+				$("div.blockBody").prepend("<div class='topicBlock'><div class='topicBlockFont' onclick='concreteTopic()' style='cursor:pointer'>话题"+(i)+"</div></div>")
+			}
 		},
 		error:function()
 		{
 			alert("获取课程信息失败");
 		}
 		});
+
+}
+
+//点击话题
+function concreteTopic()
+{
+	window.location.href='StudentViewTopicPage(fixed).html';
+}
+//点击查看分数
+function viewGrade()
+{
+	window.location.href='StudentViewGradePage.html';
 }

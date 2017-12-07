@@ -4,9 +4,10 @@
 }(jQuery));
 
 function init(){
+	var id;
 	//获取左侧课程基本信息	
 	$.ajax({			
-		url: "http://rap2api.taobao.org/app/mock/933/GET/course ",
+		url: "/course/"+id,
 		type: "GET",
 		data: {},
 		async: false,
@@ -14,9 +15,13 @@ function init(){
 		{
 			var courseInfo=data;//要写成数组
 			//获取线上的课程名字
-			$("div.courseName").prepend(courseInfo.name);
+			$("div.courseName").prepend(
+					courseInfo.name
+			);
 			//获取线下的课程介绍
-			$("div.navigation").append("   <div class='courseIntroduction'>OOAD is XXX</div>");
+			$("div.navigation").append(
+					"<div class='courseIntroduction'>"+courseInfo.description+"</div>"						
+			);
 		},
 		error:function()
 		{
@@ -25,7 +30,7 @@ function init(){
 		});
 	//获取成绩信息	
 	 $.ajax({			
-			url: " http://rap2api.taobao.org/app/mock/933/GET/group/28?embedTopics=true ",
+			url: "/group/"+id,
 			type: "GET",
 			data: {},
 			async: false,
