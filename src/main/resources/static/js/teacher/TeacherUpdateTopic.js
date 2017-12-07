@@ -5,8 +5,9 @@
 
 function init(){
 	//获取左侧课程基本信息	
+	var id;
 	$.ajax({			
-		url: "http://rap2api.taobao.org/app/mock/933/GET/course ",
+		url: "/course/"+id,
 		type: "GET",
 		data: {},
 		async: false,
@@ -19,7 +20,7 @@ function init(){
 			);
 			//获取线下的课程介绍
 			$("div.navigation").append(
-				   "<div class='courseIntroduction'>ooad is xxx</div>"			
+					 "<div class='courseIntroduction'>"+courseInfo.description+"</div>"		
 			);
 		},
 		error:function()
@@ -29,17 +30,17 @@ function init(){
 		});
 	//获取话题信息
 	$.ajax({			
-		url: "http://rap2api.taobao.org/app/mock/933/GET/seminar/32",
+		url: "/topic/"+id,
 		type: "GET",
 		data: {},
 		async: false,
 		success: function(data)
 		{
 			var topicInfo=data;
-			$("div#name").append( "<input type='text' name='seminarName' class='bigInput' value='"+topicInfo.name+"'>");
-			$("div#description").append("<textarea class='textStyle'>"+topicInfo.description+"</textarea>")
-			$("div#groupLimit").append( "<input type='text' name='groupLimit' class='middleInput' value='"+topicInfo.groupLimit+"'>");
-			$("div#number").append( "<input type='text' name='groupLimit' class='middleInput' value='"+topicInfo.groupLimit+"'>");
+			$("div#name").append( "<input type='text' id='topicName' class='bigInput' value='"+topicInfo.name+"'>");
+			$("div#description").append("<textarea class='textStyle' id='description'>"+topicInfo.description+"</textarea>")
+			$("div#groupLimit").append( "<input type='text' id='groupLimit' class='middleInput' value='"+topicInfo.groupLimit+"'>");
+			$("div#number").append( "<input type='text' id='groupLimit' class='middleInput' value='"+topicInfo.groupLimit+"'>");
 		},
 		error:function()
 		{
@@ -54,7 +55,31 @@ function init(){
 //提交
 function submit()
 {
-	
+	var id;
+	var serial="A";	
+	var newTopic={
+			serial:serial,
+			name : $("#topicName").val(),
+			description:$("#description").val(),
+			groupLimit:$("#groupLimit").val(),
+			groupMemberLimit:$("#groupMemberLimit").val()
+	};
+	//alert(JSON.stringify(newClass));
+	$.ajax({			
+		url:  "/topic/"+id,
+		type: "PUT",
+		//dataType : "JSON",
+		contentType: "application/json;charest=utf-8",
+		data: JSON.stringify(newTopic),
+		success: function(data)
+		{
+				alert("修改成功"+data);
+		},
+		error:function()
+		{
+			alert("添加失败");
+		}
+		});	
 }
 //重置
 function reload()

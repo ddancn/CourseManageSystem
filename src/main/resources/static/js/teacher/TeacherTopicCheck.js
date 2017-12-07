@@ -4,22 +4,23 @@
 }(jQuery));
 
 function init(){
+	var id;
 	//获取左侧课程基本信息	
 	$.ajax({			
-		url: "http://rap2api.taobao.org/app/mock/933/GET/course ",
+		url: "/course/"+id,
 		type: "GET",
 		data: {},
 		async: false,
 		success: function(data)
 		{
-			var courseInfo=data;//要写成数组
+			var courseInfo=data;
 			//获取线上的课程名字
 			$("div.courseName").prepend(
 					courseInfo.name
 			);
 			//获取线下的课程介绍
 			$("div.navigation").append(
-				   "<div class='courseIntroduction'>ooad is xxx</div>"			
+					 "<div class='courseIntroduction'>"+courseInfo.description+"</div>"				
 			);
 		},
 		error:function()
@@ -29,16 +30,18 @@ function init(){
 		});
 	//获取话题信息
 	$.ajax({			
-		url: "  http://rap.taobao.org/mockjsdata/29816/seminar/32/topic",
+		url: "/topic/"+id,
 		type: "GET",
 		data: {},
 		async: false,
 		success: function(data)
 		{
 			var topicInfo=data;
-			$("label#name").append(topicInfo[0].name);
-			$("label#description").append(topicInfo[0].description);
-			$("label#groupLimit").append(topicInfo[0].groupLimit);
+			$("label#name").append(topicInfo.name);
+			$("label#description").append(topicInfo.description);
+			$("label#groupLimit").append(topicInfo.groupLimit);
+			$("label#groupMemberLimit").append(topicInfo.groupMemberLimit);
+			$("label#groupLeft").append(topicInfo.groupLeft);
 		},
 		error:function()
 		{
@@ -51,6 +54,7 @@ function init(){
 //删除话题
 function deleteTopic()
 {
+	var id;
 	if 
 	(confirm("您确定要删除该话题吗？")){		
 	$.ajax({			
@@ -60,7 +64,7 @@ function deleteTopic()
 		async: false,
 		success: function(data)
 		{
-			alert(data);
+			alert("删除成功"+data);
 		},
 		error:function()
 		{
@@ -73,4 +77,5 @@ function deleteTopic()
 //修改话题
 function updateTopic()
 {
+	window.location.href='TeacherUpdateTopic.html'
 }
