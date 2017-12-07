@@ -26,9 +26,9 @@ public class SeminarController {
 
 	//按ID获取讨论课，传入讨论课id，返回讨论课对象
 	@RequestMapping(value="/{seminarId}", method=RequestMethod.GET)
-	public Seminar getSeminarById(@PathVariable("seminarId") int seminarId){
+	public Seminar getSeminarById(@PathParam("seminarId") Integer seminarId){
 		Topic topic[]=new Topic[1];
-		topic[0]=new Topic( 257,null,"领域模型与模块",  null, seminarId, seminarId, seminarId);
+		topic[0]=new Topic( 257,null,"领域模型与模块",  null, 1, 1, 1);
 		Seminar seminar=new Seminar(32,"概要设计","模型层与数据库设计","fixed","2017-10-10","2017-10-24",topic,null);//假的
 		return seminar;
 	}
