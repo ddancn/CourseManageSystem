@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>学生查看讨论课（固定）</title>
     <link href="../../css/student/content.css" rel="stylesheet" type="text/css"/>>
+    <link href="../../css/teacher/content.css" rel="stylesheet" type="text/css"/>>
 </head>
 <body>
     
@@ -15,9 +16,9 @@
             课堂管理系统
           </div>
           <div class="icon">
-            <img src="../../Img/home.png">首页
+           <a href="StudentHomePage.html">  <img src="../../Img/home.png">首页</a>
             <img src="../../Img/help.png">帮助
-            <img src="../../Img/exit.png">退出
+           <a href="../common/WechatLoginPage.html"> <img src="../../Img/exit.png">退出</a>
           </div>
           <div class="clear"></div>
         </div>
@@ -29,7 +30,7 @@
             <div class="content">
                 <div class="block">
                     <div class="title">讨论课1</div>
-                    <div class="returnButton">返回上一页</div>
+                  <button class="returnButton" style='cursor:pointer'> <a href="StudentCourseInformation.html"> 返回上一页</a></button>
                     <div class="line"></div>
                     <div class="itemBody">
                         <div class="item">
@@ -55,10 +56,10 @@
           
           			</div>
                     <div class="item">
-                        <button class="uploadbutton">上传报告</button>
+                        <input type='file'>
 				    </div>
 					<div class="item">
-                        <button class="viewscorebutton">查看分数</button>
+                        <button class="viewscorebutton" onclick="viewGrade()" style='cursor:pointer'>查看分数</button>
                         <div class="clear"></div>
                     </div>
                 </div>
