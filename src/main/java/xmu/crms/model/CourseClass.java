@@ -7,13 +7,13 @@ public class CourseClass {
     private String time;
     private String site;
     private String courseName;
-    private Teacher courseTeacher;
+    private String courseTeacher;
 
     public CourseClass() {
     }
 
     public CourseClass(int id, String name, int numStudent, String time,
-                       String site, String courseName, Teacher courseTeacher) {
+                       String site, String courseName, String courseTeacher) {
         this.id = id;
         this.name = name;
         this.numStudent = numStudent;
@@ -71,11 +71,11 @@ public class CourseClass {
         this.courseName = courseName;
     }
 
-    public Teacher getCourseTeacher() {
+    public String getCourseTeacher() {
         return courseTeacher;
     }
 
-    public void setCourseTeacher(Teacher courseTeacher) {
+    public void setCourseTeacher(String courseTeacher) {
         this.courseTeacher = courseTeacher;
     }
 
