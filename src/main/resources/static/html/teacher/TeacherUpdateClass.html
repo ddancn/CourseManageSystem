@@ -8,7 +8,7 @@
 </head>
 <body>
     
-        <div class="top">
+             <div class="top">
           <div class="font">
             课堂管理系统
           </div>
@@ -23,54 +23,70 @@
             <div class="navigation">
                 <div class="courseName"></div>
                 <div class="line"></div>
-               
+            
             </div>
             <div class="content">
                 <div class="block">
-                    <div class="title">修改班级信息</div>
-                    <div class="returnButton">返回上一页</div>
+                    <div class="title">创建班级</div>
+                    <div class="returnButton" style='cursor:pointer'>返回上一页</div>
                     <div class="line"></div>
                     <div class="itemBody">
                         <div class="item" id="name">
                           <label class="itemName">班级名称:</label>
+                          
+                        </div>
+                        <div class="item" id="site">
+                          <label class="itemName" >上课地点:</label>
                          
                         </div>
-                        <div class="item" id="place">
-                          <label class="itemName" >上课地点:</label>
-                          
+                        <div class="item"  id="add">
+                          <label class="itemName">上课时间:</label>
+                          <select id="week1" class="bigSelect">
+                             <option value ="单周">单周</option>
+                             <option value ="双周">双周</option>
+                             <option value ="每周" selected="selected">每周</option>
+                          </select>
+                          <select id="day1" class="smallSelect">
+                             <option value ="周一">周一</option>
+                             <option value ="周二">周二</option>
+                             <option value ="周三" >周三</option>
+                             <option value ="周四">周四</option>
+                             <option value ="周五">周五</option>
+                             <option value ="周六" >周六</option>
+                             <option value ="周日" >周日</option>
+                          </select>
+                          <select id="lesson1" class="smallSelect">
+                             <option value ="一二节">一二节</option>
+                             <option value ="三四节">三四节</option>
+                             <option value ="五六节" >五六节</option>
+                             <option value ="七八节">七八节</option>
+                             <option value ="九十节">九十节</option>                        
+                          </select>
+                          <button class="addButton" onclick="add()" style="cursor:pointer">添加</button>
                         </div>
-                        <div class="item" id="add">
-                          <label class="itemName" id="time">上课时间:</label>
-                          <select class="bigSelect"></select>
-                          <select class="smallSelect"></select>
-                          <select class="smallSelect"></select>
-                          
-                          <button class="addButton" onclick="add()">添加</button>
-                        </div>
-                       
-                        <div class="item" id="rule">
+                        <div class="item">
                           <label class="itemName">评分规则:</label>
                           <label class="itemName">讨论课分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                         <input type="text" id="seminarGrade" class="smallInput">
                           <label class="itemName">报告分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="reportGrade" class="smallInput">
                         </div>
                         <div class="item" style="margin-left: 18%">
                           <label class="itemName">5分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="seminarGrade5" class="smallInput">
                           <label class="itemName">4分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="seminarGrade4" class="smallInput">
                           <label class="itemName">3分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="seminarGrade3" class="smallInput">
                         </div>
                         <div class="item">
                           <label class="itemName">导入学生名单:</label>
-                          <label class="itemName">student.xlsx</label>
-                          <input type="file" >
+               
+                          <input type='file'>
                         </div>
                         <div class="item">
-                          <button class="submit">提交</button>
-                          <button class="reset" onclick="reload()">重置</button>
+                          <button class="submit" onclick="createClass()" style="cursor:pointer">提交</button>
+                          <button class="reset" onclick="reset()" style="cursor:pointer">重置</button>
                           <div class="clear"></div>
                         </div>
                     </div>

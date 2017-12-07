@@ -41,8 +41,8 @@
                         <div class="item" id="GroupingMethod">
                           <label class="itemName">分组方式: </label>
                           <select class="bigSelect">
-                          <option  value = "固定分组" >固定分组</option>
-						  <option  value = "随机分组"  selected = "selected" >随机分组</option >
+                          <option   >固定分组</option>
+						  <option    selected = "selected" >随机分组</option >
                           </select>
                         </div>
                         <div class="item" >
@@ -54,20 +54,20 @@
                         <div class="item">
                           <label class="itemName">评分规则:</label>
                           <label class="itemName">讨论课分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="seminarGrade" class="smallInput">
                           <label class="itemName">报告分数占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="reportGrade" class="smallInput">
                         </div>
                         <div class="item" style="margin-left: 18%">
                           <label class="itemName">5分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="seminarGrade5" class="smallInput">
                           <label class="itemName">4分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="seminarGrade4" class="smallInput">
                           <label class="itemName">3分占比</label>
-                          <input type="text" name="seminarGrade" class="smallInput">
+                          <input type="text" id="seminarGrade3" class="smallInput">
                         </div>
                         <div class="item">
-                          <button class="submit">提 交</button>
+                          <button class="submit" onclick="submit()">提 交</button>
                           <button class="reset" onclick="reload()">重 置</button>
                           <div class="clear"></div>
                         </div>
